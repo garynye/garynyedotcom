@@ -478,6 +478,7 @@ function App() {
               </List>
             </AccordionDetails>
           </Accordion>
+        
           <Typography variant="h6" color="#388e3c">
             Ford College Graduate Developmental Program
           </Typography>
