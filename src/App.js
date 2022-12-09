@@ -22,10 +22,8 @@ import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import RemoveIcon from "@mui/icons-material/Remove";
 import { useState, useEffect } from "react";
 
-
 function App() {
-
-  const [width, setWidth] = useState (window.innerWidth);
+  const [width, setWidth] = useState(window.innerWidth);
 
   function handleWindowSizeChange() {
     setWidth(window.innerWidth);
@@ -111,7 +109,7 @@ function App() {
           <Card sx={{ margin: 2, maxWidth: 150, backgroundColor: "#FFFFFF" }}>
             <CardMedia
               component="img"
-              image="https://media-exp1.licdn.com/dms/image/C510BAQFG44YoQsjgdQ/company-logo_200_200/0/1519963312168?e=1646870400&v=beta&t=D6M-TeDvFE-D8vUxzyDi7KqgRaHeShRxQhvorE0fOBw"
+              image="https://res.cloudinary.com/assurily/image/upload/v1670619243/garynyedotcom/bridgestone_qnwwcg.jpg"
               alt="Bridgestone"
             />
           </Card>
@@ -241,7 +239,7 @@ function App() {
           <Card sx={{ margin: 2, maxWidth: 150, backgroundColor: "#FFFFFF" }}>
             <CardMedia
               component="img"
-              image="https://media-exp1.licdn.com/dms/image/C4D0BAQFxhsUQuX5Qyg/company-logo_200_200/0/1561991494491?e=1646870400&v=beta&t=H-i2LrXQi-WF9SPeDmeF-sy2npJiLa8s2st6s4nDjLQ"
+              image="https://res.cloudinary.com/assurily/image/upload/v1670619243/garynyedotcom/mars_xbhhth.jpg"
               alt="Mars Inc."
             />
           </Card>
@@ -427,7 +425,7 @@ function App() {
           <Card sx={{ margin: 2, maxWidth: 150, backgroundColor: "#FFFFFF" }}>
             <CardMedia
               component="img"
-              image="https://media-exp1.licdn.com/dms/image/C560BAQHZnQf3t8fKKg/company-logo_200_200/0/1620306010588?e=1646870400&v=beta&t=aes49tO8g1rjQpnIyXesgueUQFxnZiTsSu2bgikXjpM"
+              image="https://res.cloudinary.com/assurily/image/upload/v1670619243/garynyedotcom/ford_thrxnb.jpg"
               alt="Ford"
             />
           </Card>
@@ -528,7 +526,7 @@ function App() {
           <Card sx={{ margin: 2, maxWidth: 150, backgroundColor: "#FFFFFF" }}>
             <CardMedia
               component="img"
-              image="https://media-exp1.licdn.com/dms/image/C4D0BAQEhm6CxadhHZg/company-logo_200_200/0/1584994142361?e=1646870400&v=beta&t=W9lMHdZQHLRqF_AElBVYyRBS1sIo8RjoBquNoEA3-OU"
+              image="https://res.cloudinary.com/assurily/image/upload/v1670619243/garynyedotcom/ross_rqqijd.jpg"
               alt="UM"
             />
           </Card>
@@ -559,7 +557,7 @@ function App() {
           <Card sx={{ margin: 2, maxWidth: 150, backgroundColor: "#FFFFFF" }}>
             <CardMedia
               component="img"
-              image="https://media-exp1.licdn.com/dms/image/C560BAQHdGNXEdwcaUg/company-logo_200_200/0/1519856161122?e=1646870400&v=beta&t=uL_ZMYxrO9j-7ZoSMCCjHFOvbAMHCpUxOMYHuKKzs1I"
+              image="https://res.cloudinary.com/assurily/image/upload/v1670619242/garynyedotcom/mtu_kw7fyk.jpg"
               alt="MTU"
             />
           </Card>
