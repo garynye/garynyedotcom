@@ -24,7 +24,7 @@
 /.parcel-cache
 /.eslintcache
 
-# Netlify local project link
+# legacy local deploy state
 /.netlify
 
 # environment
