@@ -13,19 +13,55 @@ import List from "@mui/material/List";
 import ListItem from "@mui/material/ListItem";
 import ListItemText from "@mui/material/ListItemText";
 import ListItemIcon from "@mui/material/ListItemIcon";
-import ArrowCircleRightIcon from "@mui/icons-material/ArrowCircleRight";
 import CardContent from "@mui/material/CardContent";
 import Accordion from "@mui/material/Accordion";
 import AccordionSummary from "@mui/material/AccordionSummary";
 import AccordionDetails from "@mui/material/AccordionDetails";
-import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
-import RemoveIcon from "@mui/icons-material/Remove";
 import { useState, useEffect } from "react";
 import { ThemeProvider, createTheme } from "@mui/material/styles";
 import Switch from "@mui/material/Switch";
-import Brightness4Icon from "@mui/icons-material/Brightness4";
-import Brightness7Icon from "@mui/icons-material/Brightness7";
 import CssBaseline from "@mui/material/CssBaseline";
+import SvgIcon from "@mui/material/SvgIcon";
+
+function ArrowCircleRightIcon(props) {
+  return (
+    <SvgIcon {...props}>
+      <path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20Zm0 18a8 8 0 1 1 0-16 8 8 0 0 1 0 16Zm1-13-1.41 1.41L14.17 11H7v2h7.17l-2.58 2.59L13 17l5-5-5-5Z" />
+    </SvgIcon>
+  );
+}
+
+function ExpandMoreIcon(props) {
+  return (
+    <SvgIcon {...props}>
+      <path d="m7.41 8.59 4.59 4.58 4.59-4.58L18 10l-6 6-6-6 1.41-1.41Z" />
+    </SvgIcon>
+  );
+}
+
+function RemoveIcon(props) {
+  return (
+    <SvgIcon {...props}>
+      <path d="M19 13H5v-2h14v2Z" />
+    </SvgIcon>
+  );
+}
+
+function Brightness4Icon(props) {
+  return (
+    <SvgIcon {...props}>
+      <path d="M12 3a9 9 0 1 0 9 9c0-.46-.04-.92-.1-1.36A7 7 0 0 1 12.36 3.1C12.24 3.04 12.12 3 12 3Z" />
+    </SvgIcon>
+  );
+}
+
+function Brightness7Icon(props) {
+  return (
+    <SvgIcon {...props}>
+      <path d="M6.76 4.84 5.34 3.42 3.93 4.83l1.42 1.42 1.41-1.41ZM1 13h3v-2H1v2Zm10-12h2v3h-2V1Zm9.07 3.84-1.41-1.41-1.42 1.41 1.42 1.42 1.41-1.42ZM17.24 19.16l1.42 1.42 1.41-1.41-1.41-1.42-1.42 1.41ZM20 11v2h3v-2h-3ZM12 6a6 6 0 1 0 0 12 6 6 0 0 0 0-12Zm-1 17h2v-3h-2v3Zm-7.07-3.84 1.41 1.41 1.42-1.42-1.41-1.41-1.42 1.42Z" />
+    </SvgIcon>
+  );
+}
 
 const lightTheme = createTheme({
   palette: {
@@ -85,7 +121,6 @@ function App() {
         <Grid container spacing={2}>
           <Grid item={true} xs={12} sm={12}>
             <Card
-            justifyContent="center"
             align="center"
             sx={{
               backgroundImage: darkMode 
@@ -124,7 +159,12 @@ function App() {
               </a>
               <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center', mt: 2 }}>
                 {darkMode ? <Brightness4Icon sx={{ color: 'common.white' }} /> : <Brightness7Icon sx={{ color: 'common.white' }} />}
-                <Switch checked={darkMode} onChange={handleThemeChange} sx={{ color: 'common.white' }} />
+                <Switch
+                  checked={darkMode}
+                  inputProps={{ "aria-label": "Toggle dark mode", role: "switch" }}
+                  onChange={handleThemeChange}
+                  sx={{ color: 'common.white' }}
+                />
               </Box>
             </CardContent>
           </Card>

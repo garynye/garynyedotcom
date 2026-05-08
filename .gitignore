@@ -3,25 +3,40 @@
 # dependencies
 /node_modules
 /node_modules_broken
+/node_modules_partial
+/node_modules_old_*
+/.yarn
+/.pnpm-store
 /.pnp
 .pnp.js
 
 # testing
 /coverage
 
-# production
+# production builds
 /build
+/dist
+/.vite
+/.vitest
+
+# cache
+/.cache
+/.parcel-cache
+/.eslintcache
 
 # Netlify local project link
 /.netlify
 
+# environment
+.env
+.env.*
+!.env.example
+
 # misc
 .DS_Store
-.env.local
-.env.development.local
-.env.test.local
-.env.production.local
 
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+pnpm-debug.log*
+*.log

@@ -4,4 +4,4 @@
 
 [context.production.environment]
   CI = "false"
-  NODE_VERSION = "16"
+  NODE_VERSION = "24"
