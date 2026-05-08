@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" role="img" aria-labelledby="title desc">
+  <title id="title">HearClara logo</title>
+  <desc id="desc">A yellow C on a dark circular background.</desc>
+  <rect width="200" height="200" fill="#ffffff"/>
+  <circle cx="100" cy="100" r="96" fill="#241b3f"/>
+  <text x="100" y="133" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif" font-size="118" font-weight="700" fill="#ffcc22">C</text>
+</svg>

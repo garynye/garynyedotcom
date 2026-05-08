@@ -199,6 +199,145 @@ function App() {
           <Card sx={{ margin: 2, maxWidth: 150, backgroundColor: "background.paper" }}>
             <CardMedia
               component="img"
+              image="/hearclara-logo.svg"
+              alt="HearClara"
+            />
+          </Card>
+        </Grid>
+        <Grid item={true} xs={12} sm={6}>
+          <Typography variant="h5" color="primary.main">
+            HearClara
+          </Typography>
+          <Typography variant="h6" color="secondary.main">
+            Founder & Developer
+          </Typography>
+          <Typography variant="subtitle2" sx={{ color: 'text.secondary' }}>
+            Mar 2026 - Present
+          </Typography>
+          <br></br>
+          <Accordion>
+            <AccordionSummary
+              expandIcon={<ExpandMoreIcon sx={{ color: 'text.secondary' }} />}
+              aria-controls="hearclara-content"
+              id="hearclara-header"
+            >
+              <Typography variant="body2" sx={{ color: 'text.secondary' }}>
+                Bootstrapped and developed HearClara, a premium, audio-first
+                language acquisition platform designed to solve the short-term
+                working memory bottleneck in adult learners.
+              </Typography>
+            </AccordionSummary>
+            <AccordionDetails>
+              <List dense>
+                <ListItem>
+                  <ListItemIcon>
+                    <ArrowCircleRightIcon sx={{ color: 'secondary.main' }} />
+                  </ListItemIcon>
+                  <ListItemText primary="Returned to my engineering roots to architect a proprietary Neural Memory Model that dynamically paces cognitive load." />
+                </ListItem>
+                <ListItem>
+                  <ListItemIcon>
+                    <ArrowCircleRightIcon sx={{ color: 'secondary.main' }} />
+                  </ListItemIcon>
+                  <ListItemText primary="Paired the learning model with Clara, an AI-driven tutor delivering 100+ hours of high-fidelity, native audio immersion." />
+                </ListItem>
+                <ListItem>
+                  <ListItemIcon>
+                    <ArrowCircleRightIcon sx={{ color: 'secondary.main' }} />
+                  </ListItemIcon>
+                  <ListItemText primary="Engineered the full stack, including cloud infrastructure, LLM integrations, and a custom subscription billing engine to keep unit economics lean from Day 1." />
+                </ListItem>
+              </List>
+            </AccordionDetails>
+          </Accordion>
+        </Grid>
+        <Grid item={true} xs={0} sm={2}></Grid>
+        <Grid item={true} xs={0} sm={2}></Grid>
+        <Grid item={true} xs={12} sm={2}>
+          <Card sx={{ margin: 2, maxWidth: 150, backgroundColor: "background.paper" }}>
+            <CardMedia
+              component="img"
+              image="/multiple-companies-logo.svg"
+              alt="Multiple Companies"
+            />
+          </Card>
+        </Grid>
+        <Grid item={true} xs={12} sm={6}>
+          <Typography variant="h5" color="primary.main">
+            Multiple Companies
+          </Typography>
+          <Typography variant="h6" color="secondary.main">
+            Operating Partner | Strategy & Operational Execution
+          </Typography>
+          <Typography variant="subtitle2" sx={{ color: 'text.secondary' }}>
+            Apr 2021 - Present
+          </Typography>
+        </Grid>
+        <Grid item={true} xs={0} sm={2}></Grid>
+        <Grid item={true} xs={0} sm={2}></Grid>
+        <Grid item={true} xs={12} sm={2}>
+          <Card sx={{ margin: 2, maxWidth: 150, backgroundColor: "background.paper" }}>
+            <CardMedia
+              component="img"
+              image="/thermo-fisher-logo.svg"
+              alt="Thermo Fisher Scientific"
+            />
+          </Card>
+        </Grid>
+        <Grid item={true} xs={12} sm={6}>
+          <Typography variant="h5" color="primary.main">
+            Thermo Fisher Scientific
+          </Typography>
+          <Typography variant="h6" color="secondary.main">
+            Senior Director of Operations
+          </Typography>
+          <Typography variant="subtitle2" sx={{ color: 'text.secondary' }}>
+            Jan 2022 - Sep 2025 | London, UK | Eindhoven, NL | Nashville, USA
+          </Typography>
+          <br></br>
+          <Accordion>
+            <AccordionSummary
+              expandIcon={<ExpandMoreIcon sx={{ color: 'text.secondary' }} />}
+              aria-controls="thermo-content"
+              id="thermo-header"
+            >
+              <Typography variant="body2" sx={{ color: 'text.secondary' }}>
+                Directed enterprise-wide operations and supply chain strategy
+                within Global Business Services while serving as operational
+                lead for the multi-billion-dollar Materials and Structural
+                Analysis Division based in Eindhoven, Netherlands.
+              </Typography>
+            </AccordionSummary>
+            <AccordionDetails>
+              <List dense>
+                <ListItem>
+                  <ListItemIcon>
+                    <ArrowCircleRightIcon sx={{ color: 'secondary.main' }} />
+                  </ListItemIcon>
+                  <ListItemText primary="Built a new enterprise organization for engineering cost-out work, including advanced analytics teams in Costa Rica and engineering hubs in Eastern Europe." />
+                </ListItem>
+                <ListItem>
+                  <ListItemIcon>
+                    <ArrowCircleRightIcon sx={{ color: 'secondary.main' }} />
+                  </ListItemIcon>
+                  <ListItemText primary="Reorganized central planning and aligned life sciences, material sciences, and semiconductor units to improve S&OP, inventory, and operational efficiency." />
+                </ListItem>
+                <ListItem>
+                  <ListItemIcon>
+                    <ArrowCircleRightIcon sx={{ color: 'secondary.main' }} />
+                  </ListItemIcon>
+                  <ListItemText primary="Mitigated severe global chip shortages and complex supplier constraints driven by AI-industry capacity allocations through advanced forecasting and supplier engagement." />
+                </ListItem>
+              </List>
+            </AccordionDetails>
+          </Accordion>
+        </Grid>
+        <Grid item={true} xs={0} sm={2}></Grid>
+        <Grid item={true} xs={0} sm={2}></Grid>
+        <Grid item={true} xs={12} sm={2}>
+          <Card sx={{ margin: 2, maxWidth: 150, backgroundColor: "background.paper" }}>
+            <CardMedia
+              component="img"
               image="https://res.cloudinary.com/assurily/image/upload/v1670619243/garynyedotcom/bridgestone_qnwwcg.jpg"
               alt="Bridgestone"
             />

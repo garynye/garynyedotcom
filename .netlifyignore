@@ -1,0 +1,6 @@
+node_modules/
+node_modules_old_*/
+node_modules_partial/
+build/
+.git/
+.netlify/

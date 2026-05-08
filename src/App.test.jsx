@@ -37,3 +37,13 @@ test('should toggle theme when switch is clicked and body background color chang
   expect(themeSwitch.checked).toBe(false);
   expect(getComputedStyle(document.body).backgroundColor).toBe('rgb(255, 255, 255)');
 });
+
+test('renders post-Bridgestone experience entries', () => {
+  render(<App />);
+
+  expect(screen.getAllByText('HearClara').length).toBeGreaterThan(0);
+  expect(screen.getByText('Founder & Developer')).toBeTruthy();
+  expect(screen.getByText('Operating Partner | Strategy & Operational Execution')).toBeTruthy();
+  expect(screen.getAllByText('Thermo Fisher Scientific').length).toBeGreaterThan(0);
+  expect(screen.getByText('Senior Director of Operations')).toBeTruthy();
+});
