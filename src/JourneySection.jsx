@@ -77,20 +77,23 @@ function RoleDetails({ entry, role, roleIndex }) {
 
   if (role.summary) {
     return (
-      <Accordion disableGutters className="journey-accordion lighting-border">
-        <AccordionSummary
-          expandIcon={<ExpandMoreIcon />}
-          aria-controls={`${roleId}-content`}
-          id={`${roleId}-header`}
-        >
-          <Typography variant="body2" className="journey-summary-copy">
-            {role.summary}
-          </Typography>
-        </AccordionSummary>
-        <AccordionDetails>
-          <RoleHighlights highlights={role.highlights} />
-        </AccordionDetails>
-      </Accordion>
+      <Box className="journey-shimmer-shell">
+        <Box aria-hidden="true" className="journey-shimmer-spinner" />
+        <Accordion disableGutters className="journey-accordion">
+          <AccordionSummary
+            expandIcon={<ExpandMoreIcon />}
+            aria-controls={`${roleId}-content`}
+            id={`${roleId}-header`}
+          >
+            <Typography variant="body2" className="journey-summary-copy">
+              {role.summary}
+            </Typography>
+          </AccordionSummary>
+          <AccordionDetails>
+            <RoleHighlights highlights={role.highlights} />
+          </AccordionDetails>
+        </Accordion>
+      </Box>
     );
   }
 
@@ -166,11 +169,11 @@ export default function JourneySection() {
       return undefined;
     }
 
-    const panels = Array.from(document.querySelectorAll(".journey-accordion"));
+    const panels = Array.from(document.querySelectorAll(".journey-shimmer-shell"));
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
-          entry.target.classList.toggle("journey-accordion--center-active", entry.isIntersecting);
+          entry.target.classList.toggle("journey-shimmer-shell--center-active", entry.isIntersecting);
         });
       },
       {
@@ -183,7 +186,7 @@ export default function JourneySection() {
     panels.forEach((panel) => observer.observe(panel));
 
     return () => {
-      panels.forEach((panel) => panel.classList.remove("journey-accordion--center-active"));
+      panels.forEach((panel) => panel.classList.remove("journey-shimmer-shell--center-active"));
       observer.disconnect();
     };
   }, []);
