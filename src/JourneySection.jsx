@@ -1,4 +1,5 @@
 import * as React from "react";
+import { useEffect } from "react";
 import Accordion from "@mui/material/Accordion";
 import AccordionDetails from "@mui/material/AccordionDetails";
 import AccordionSummary from "@mui/material/AccordionSummary";
@@ -160,6 +161,33 @@ function JourneyEntry({ entry }) {
 }
 
 export default function JourneySection() {
+  useEffect(() => {
+    if (!window.matchMedia("(max-width: 640px)").matches || !("IntersectionObserver" in window)) {
+      return undefined;
+    }
+
+    const panels = Array.from(document.querySelectorAll(".journey-accordion"));
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          entry.target.classList.toggle("journey-accordion--center-active", entry.isIntersecting);
+        });
+      },
+      {
+        root: null,
+        rootMargin: "-42% 0px -42% 0px",
+        threshold: 0,
+      }
+    );
+
+    panels.forEach((panel) => observer.observe(panel));
+
+    return () => {
+      panels.forEach((panel) => panel.classList.remove("journey-accordion--center-active"));
+      observer.disconnect();
+    };
+  }, []);
+
   return (
     <Box component="section" className="journey-section" aria-labelledby="journey-heading">
       <Box className="journey-heading-wrap">

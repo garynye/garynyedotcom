@@ -37,7 +37,7 @@ test('renders post-Bridgestone experience entries', () => {
 
   expect(screen.getAllByText('HearClara').length).toBeGreaterThan(0);
   expect(screen.getByText('Founder & Developer')).toBeTruthy();
-  expect(screen.getByText('Operating Partner | Strategy & Operational Execution')).toBeTruthy();
+  expect(screen.queryByText('Operating Partner | Strategy & Operational Execution')).toBeNull();
   expect(screen.getAllByText('Thermo Fisher Scientific').length).toBeGreaterThan(0);
   expect(screen.getByText('Senior Director of Operations')).toBeTruthy();
 });

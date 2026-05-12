@@ -21,17 +21,6 @@ export const journeyEntries = [
     ],
   },
   {
-    company: "Multiple Companies",
-    logo: "/multiple-companies-logo.svg",
-    logoAlt: "Multiple Companies",
-    roles: [
-      {
-        title: "Operating Partner | Strategy & Operational Execution",
-        meta: "Apr 2021 - Present",
-      },
-    ],
-  },
-  {
     company: "Thermo Fisher Scientific",
     logo: "/thermo-fisher-logo.svg",
     logoAlt: "Thermo Fisher Scientific",

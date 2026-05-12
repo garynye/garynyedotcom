@@ -16,12 +16,29 @@ code {
     monospace;
 }
 
+.hero-card {
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-card::after {
+  content: "";
+  position: absolute;
+  inset: auto 0 0;
+  height: min(28vh, 260px);
+  pointer-events: none;
+  background:
+    linear-gradient(180deg, rgba(7, 11, 16, 0), rgba(7, 11, 16, 0.78) 68%, #070b10 100%),
+    radial-gradient(ellipse at 50% 100%, rgba(77, 217, 245, 0.08), transparent 58%);
+}
+
 .journey-section {
   position: relative;
   overflow: hidden;
-  padding: 4.5rem 1.25rem 1rem;
+  margin-top: -1px;
+  padding: 3.35rem 1.25rem 1rem;
   background:
-    linear-gradient(180deg, rgba(7, 11, 16, 0) 0%, rgba(12, 19, 27, 0.48) 18%, rgba(7, 11, 16, 0) 100%),
+    linear-gradient(180deg, #070b10 0%, rgba(12, 19, 27, 0.36) 22%, rgba(7, 11, 16, 0) 100%),
     repeating-linear-gradient(90deg, rgba(255, 255, 255, 0.012) 0 1px, transparent 1px 72px);
 }
 
@@ -125,26 +142,37 @@ code {
   position: sticky;
   top: 5rem;
   display: block;
-  width: 13px;
-  height: 13px;
+  width: 7px;
+  height: 7px;
   margin: 23px auto 0;
   border-radius: 999px;
-  background:
-    radial-gradient(circle at 38% 34%, #fff2aa 0 12%, #f5b448 34%, rgba(245, 180, 72, 0.55) 56%, rgba(245, 180, 72, 0) 72%);
+  background: #fff4aa;
   box-shadow:
-    0 0 16px rgba(245, 180, 72, 0.7),
-    0 0 34px rgba(77, 217, 245, 0.32),
-    0 0 58px rgba(77, 217, 245, 0.18);
+    0 0 8px rgba(255, 244, 170, 0.92),
+    0 0 20px rgba(245, 180, 72, 0.68),
+    0 0 44px rgba(77, 217, 245, 0.22);
+}
+
+.journey-node::before {
+  content: "";
+  position: absolute;
+  inset: -26px;
+  z-index: -2;
+  border-radius: inherit;
+  background:
+    radial-gradient(circle, rgba(255, 244, 170, 0.34) 0 8%, rgba(245, 180, 72, 0.16) 22%, rgba(77, 217, 245, 0.08) 44%, transparent 72%);
+  filter: blur(10px);
+  transform: scale(1.14);
 }
 
 .journey-node::after {
   content: "";
   position: absolute;
-  inset: -15px;
+  inset: -11px;
   z-index: -1;
   border-radius: inherit;
-  background: radial-gradient(circle, rgba(77, 217, 245, 0.26), rgba(77, 217, 245, 0.08) 42%, transparent 72%);
-  filter: blur(1px);
+  background: radial-gradient(circle, rgba(255, 234, 134, 0.36) 0 10%, rgba(245, 180, 72, 0.16) 34%, transparent 76%);
+  filter: blur(5px);
   animation: journey-node-glow 3.4s ease-in-out infinite;
 }
 
@@ -216,6 +244,7 @@ code {
 .journey-accordion {
   position: relative;
   overflow: hidden;
+  isolation: isolate;
   border: 1px solid rgba(77, 217, 245, 0.24);
   border-radius: 8px !important;
   background:
@@ -225,29 +254,77 @@ code {
     inset 0 1px 0 rgba(255, 255, 255, 0.035);
 }
 
+.journey-accordion > .MuiAccordionSummary-root,
+.journey-accordion > .MuiCollapse-root {
+  position: relative;
+  z-index: 1;
+}
+
 .journey-accordion::before {
   display: none;
+}
+
+.journey-accordion.lighting-border::before {
+  content: "";
+  position: absolute;
+  inset: 1px;
+  z-index: 0;
+  display: block;
+  pointer-events: none;
+  border-radius: 7px;
+  background:
+    linear-gradient(110deg, transparent 0 39%, rgba(255, 255, 255, 0.055) 47%, transparent 55% 100%),
+    radial-gradient(52% 65% at 50% 108%, rgba(255, 239, 204, 0.08), transparent 72%);
+  opacity: 0;
+  transform: translateX(-35%);
+  transition: opacity 180ms ease, transform 680ms ease;
 }
 
 .journey-accordion.lighting-border::after {
   content: "";
   position: absolute;
-  inset: -1px;
-  z-index: 1;
+  inset: 0;
+  z-index: 2;
   pointer-events: none;
   border-radius: inherit;
-  padding: 1px;
-  background:
+  padding: 2px;
+  background-image:
     conic-gradient(
-      from var(--journey-shimmer-angle, 0deg),
-      rgba(77, 217, 245, 0),
-      rgba(77, 217, 245, 0.98) 10%,
-      rgba(245, 180, 72, 0.8) 17%,
-      rgba(110, 231, 183, 0.84) 24%,
-      rgba(77, 217, 245, 0) 34%,
-      rgba(77, 217, 245, 0) 100%
+      from var(--journey-shimmer-angle-1, 0deg) at 12% 18%,
+      transparent 0deg,
+      transparent 24deg,
+      rgba(236, 248, 255, 0.28) 38deg,
+      rgba(236, 248, 255, 0.96) 50deg,
+      rgba(255, 255, 255, 1) 60deg,
+      rgba(245, 180, 72, 0.74) 76deg,
+      rgba(255, 245, 215, 0.34) 92deg,
+      transparent 124deg,
+      transparent 360deg
+    ),
+    conic-gradient(
+      from var(--journey-shimmer-angle-2, 90deg) at 84% 58%,
+      transparent 0deg,
+      transparent 30deg,
+      rgba(77, 217, 245, 0.2) 48deg,
+      rgba(245, 250, 255, 0.88) 64deg,
+      rgba(255, 223, 155, 0.46) 82deg,
+      transparent 136deg,
+      transparent 360deg
+    ),
+    conic-gradient(
+      from var(--journey-shimmer-angle-3, 180deg) at 50% 100%,
+      transparent 0deg,
+      transparent 32deg,
+      rgba(255, 246, 210, 0.5) 48deg,
+      rgba(255, 255, 255, 0.82) 62deg,
+      rgba(245, 180, 72, 0.52) 82deg,
+      transparent 148deg,
+      transparent 360deg
     );
   opacity: 0;
+  filter:
+    drop-shadow(0 0 10px rgba(232, 245, 255, 0.34))
+    drop-shadow(0 0 14px rgba(245, 180, 72, 0.2));
   transition: opacity 180ms ease;
   -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
   -webkit-mask-composite: xor;
@@ -256,9 +333,20 @@ code {
 }
 
 .journey-accordion.lighting-border:hover::after,
-.journey-accordion.lighting-border:focus-within::after {
+.journey-accordion.lighting-border:focus-within::after,
+.journey-accordion.lighting-border.journey-accordion--center-active::after {
   opacity: 1;
-  animation: journey-panel-shimmer 1.7s linear infinite;
+  animation:
+    journey-panel-shimmer 3s linear infinite,
+    journey-panel-shimmer-two 7s linear infinite,
+    journey-panel-shimmer-three 11s linear infinite;
+}
+
+.journey-accordion.lighting-border:hover::before,
+.journey-accordion.lighting-border:focus-within::before,
+.journey-accordion.lighting-border.journey-accordion--center-active::before {
+  opacity: 1;
+  transform: translateX(35%);
 }
 
 .journey-accordion:hover,
@@ -266,7 +354,8 @@ code {
   border-color: rgba(77, 217, 245, 0.42);
   box-shadow:
     0 18px 54px rgba(0, 0, 0, 0.26),
-    0 0 26px rgba(77, 217, 245, 0.08),
+    0 0 28px rgba(232, 245, 255, 0.08),
+    0 0 18px rgba(245, 180, 72, 0.08),
     inset 0 1px 0 rgba(255, 255, 255, 0.045);
 }
 
@@ -349,27 +438,51 @@ code {
   line-height: 1.52;
 }
 
-@property --journey-shimmer-angle {
+@property --journey-shimmer-angle-1 {
   syntax: "<angle>";
   inherits: false;
   initial-value: 0deg;
 }
 
+@property --journey-shimmer-angle-2 {
+  syntax: "<angle>";
+  inherits: false;
+  initial-value: 90deg;
+}
+
+@property --journey-shimmer-angle-3 {
+  syntax: "<angle>";
+  inherits: false;
+  initial-value: 180deg;
+}
+
 @keyframes journey-panel-shimmer {
   to {
-    --journey-shimmer-angle: 360deg;
+    --journey-shimmer-angle-1: 360deg;
+  }
+}
+
+@keyframes journey-panel-shimmer-two {
+  to {
+    --journey-shimmer-angle-2: -270deg;
+  }
+}
+
+@keyframes journey-panel-shimmer-three {
+  to {
+    --journey-shimmer-angle-3: 540deg;
   }
 }
 
 @keyframes journey-node-glow {
   0%,
   100% {
-    opacity: 0.48;
-    transform: scale(0.92);
+    opacity: 0.54;
+    transform: scale(0.88);
   }
   50% {
-    opacity: 0.86;
-    transform: scale(1.18);
+    opacity: 0.94;
+    transform: scale(1.2);
   }
 }
 
@@ -391,6 +504,7 @@ code {
 
 @media (max-width: 640px) {
   .journey-section {
+    padding-top: 2.7rem;
     padding-inline: 0.85rem;
   }
 
@@ -435,8 +549,8 @@ code {
   }
 
   .journey-node {
-    width: 11px;
-    height: 11px;
+    width: 6px;
+    height: 6px;
     margin-top: 18px;
   }
 
@@ -468,8 +582,17 @@ code {
 @media (prefers-reduced-motion: reduce) {
   .journey-node::after,
   .journey-accordion.lighting-border:hover::after,
-  .journey-accordion.lighting-border:focus-within::after {
+  .journey-accordion.lighting-border:focus-within::after,
+  .journey-accordion.lighting-border.journey-accordion--center-active::after {
     animation: none;
+  }
+
+  .journey-accordion.lighting-border::before,
+  .journey-accordion.lighting-border:hover::before,
+  .journey-accordion.lighting-border:focus-within::before,
+  .journey-accordion.lighting-border.journey-accordion--center-active::before {
+    transform: none;
+    transition: none;
   }
 
   .journey-accordion .MuiAccordionSummary-expandIconWrapper {
