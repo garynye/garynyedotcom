@@ -16,7 +16,7 @@ test('uses dark mode without rendering a theme switch', () => {
   render(<App />);
 
   expect(screen.queryByRole('switch')).toBeNull();
-  expect(getComputedStyle(document.body).backgroundColor).toBe('rgb(18, 18, 18)');
+  expect(getComputedStyle(document.body).backgroundColor).toBe('rgb(7, 11, 16)');
 });
 
 test('links HearClara logo and company name to the website', () => {
@@ -40,4 +40,13 @@ test('renders post-Bridgestone experience entries', () => {
   expect(screen.getByText('Operating Partner | Strategy & Operational Execution')).toBeTruthy();
   expect(screen.getAllByText('Thermo Fisher Scientific').length).toBeGreaterThan(0);
   expect(screen.getByText('Senior Director of Operations')).toBeTruthy();
+});
+
+test('renders the premium journey section with accordion summaries', () => {
+  render(<App />);
+
+  expect(screen.getByRole('region', { name: /my journey/i })).toBeTruthy();
+  expect(screen.getByText(/Bootstrapped and developed HearClara/i)).toBeTruthy();
+  expect(screen.getByText(/Directed enterprise-wide operations and supply chain strategy/i)).toBeTruthy();
+  expect(screen.getByText(/Bridgestone Mobility Solutions is a business unit/i)).toBeTruthy();
 });
