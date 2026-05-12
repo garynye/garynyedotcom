@@ -280,15 +280,14 @@ code {
     drop-shadow(0 0 8px rgba(236, 248, 255, 0.32))
     drop-shadow(0 0 12px rgba(245, 180, 72, 0.16));
   animation: journey-panel-spinner 1.9s linear infinite;
-  animation-play-state: paused;
   transition: opacity 180ms ease;
+  will-change: transform;
 }
 
 .journey-shimmer-shell:hover .journey-shimmer-spinner,
 .journey-shimmer-shell:focus-within .journey-shimmer-spinner,
 .journey-shimmer-shell.journey-shimmer-shell--center-active .journey-shimmer-spinner {
   opacity: 1;
-  animation-play-state: running;
 }
 
 .journey-accordion {
@@ -507,18 +506,8 @@ code {
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .journey-node::after,
-  .journey-shimmer-spinner {
+  .journey-node::after {
     animation: none;
-  }
-
-  .journey-shimmer-spinner,
-  .journey-shimmer-shell:hover .journey-shimmer-spinner,
-  .journey-shimmer-shell:focus-within .journey-shimmer-spinner,
-  .journey-shimmer-shell.journey-shimmer-shell--center-active .journey-shimmer-spinner {
-    opacity: 0.44;
-    transform: translate(-50%, -50%) rotate(0deg);
-    transition: none;
   }
 
   .journey-accordion .MuiAccordionSummary-expandIconWrapper {
