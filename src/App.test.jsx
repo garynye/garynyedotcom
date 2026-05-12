@@ -1,4 +1,4 @@
-import { render, screen, fireEvent } from '@testing-library/react';
+import { render, screen } from '@testing-library/react';
 import App from './App.jsx';
 
 // Mock matchMedia
@@ -12,30 +12,24 @@ beforeAll(() => {
   };
 });
 
-test('should toggle theme when switch is clicked and body background color changes', () => {
+test('uses dark mode without rendering a theme switch', () => {
   render(<App />);
 
-  // Find the switch (it should be the only one)
-  const themeSwitch = screen.getByRole('switch');
-
-  // Initial state: Light mode
-  // CssBaseline with light theme typically results in body background of white.
-  // MUI default light theme background is #fff -> rgb(255, 255, 255)
-  expect(themeSwitch.checked).toBe(false);
-  expect(getComputedStyle(document.body).backgroundColor).toBe('rgb(255, 255, 255)');
-
-  // Click the switch to toggle to dark mode
-  fireEvent.click(themeSwitch);
-
-  // Check if it's now checked and body background reflects dark theme
-  // darkTheme.palette.background.default is '#121212' -> rgb(18, 18, 18)
-  expect(themeSwitch.checked).toBe(true);
+  expect(screen.queryByRole('switch')).toBeNull();
   expect(getComputedStyle(document.body).backgroundColor).toBe('rgb(18, 18, 18)');
+});
 
-  // Click again to toggle back to light mode
-  fireEvent.click(themeSwitch);
-  expect(themeSwitch.checked).toBe(false);
-  expect(getComputedStyle(document.body).backgroundColor).toBe('rgb(255, 255, 255)');
+test('links HearClara logo and company name to the website', () => {
+  render(<App />);
+
+  const hearClaraLinks = screen.getAllByRole('link', { name: /hearclara/i });
+
+  expect(hearClaraLinks).toHaveLength(2);
+  hearClaraLinks.forEach((link) => {
+    expect(link.getAttribute('href')).toBe('https://hearclara.com');
+    expect(link.getAttribute('target')).toBe('_blank');
+    expect(link.getAttribute('rel')).toBe('noopener noreferrer');
+  });
 });
 
 test('renders post-Bridgestone experience entries', () => {

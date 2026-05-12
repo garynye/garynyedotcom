@@ -19,7 +19,6 @@ import AccordionSummary from "@mui/material/AccordionSummary";
 import AccordionDetails from "@mui/material/AccordionDetails";
 import { useState, useEffect } from "react";
 import { ThemeProvider, createTheme } from "@mui/material/styles";
-import Switch from "@mui/material/Switch";
 import CssBaseline from "@mui/material/CssBaseline";
 import SvgIcon from "@mui/material/SvgIcon";
 
@@ -47,33 +46,8 @@ function RemoveIcon(props) {
   );
 }
 
-function Brightness4Icon(props) {
-  return (
-    <SvgIcon {...props}>
-      <path d="M12 3a9 9 0 1 0 9 9c0-.46-.04-.92-.1-1.36A7 7 0 0 1 12.36 3.1C12.24 3.04 12.12 3 12 3Z" />
-    </SvgIcon>
-  );
-}
-
-function Brightness7Icon(props) {
-  return (
-    <SvgIcon {...props}>
-      <path d="M6.76 4.84 5.34 3.42 3.93 4.83l1.42 1.42 1.41-1.41ZM1 13h3v-2H1v2Zm10-12h2v3h-2V1Zm9.07 3.84-1.41-1.41-1.42 1.41 1.42 1.42 1.41-1.42ZM17.24 19.16l1.42 1.42 1.41-1.41-1.41-1.42-1.42 1.41ZM20 11v2h3v-2h-3ZM12 6a6 6 0 1 0 0 12 6 6 0 0 0 0-12Zm-1 17h2v-3h-2v3Zm-7.07-3.84 1.41 1.41 1.42-1.42-1.41-1.41-1.42 1.42Z" />
-    </SvgIcon>
-  );
-}
-
-const lightTheme = createTheme({
-  palette: {
-    mode: 'light',
-    primary: {
-      main: '#0288d1', // Original blue
-    },
-    secondary: {
-      main: '#388e3c', // Original green
-    },
-  },
-});
+const HEAR_CLARA_URL = "https://hearclara.com";
+const HERO_IMAGE_URL = "/gary-hero-founder-2026.png";
 
 const darkTheme = createTheme({
   palette: {
@@ -97,11 +71,6 @@ const darkTheme = createTheme({
 
 function App() {
   const [width, setWidth] = useState(window.innerWidth);
-  const [darkMode, setDarkMode] = useState(false);
-
-  const handleThemeChange = () => {
-    setDarkMode(!darkMode);
-  };
 
   function handleWindowSizeChange() {
     setWidth(window.innerWidth);
@@ -115,7 +84,7 @@ function App() {
 
   const isMobile = width <= 768;
   return (
-    <ThemeProvider theme={darkMode ? darkTheme : lightTheme}>
+    <ThemeProvider theme={darkTheme}>
       <CssBaseline />
       <div>
         <Grid container spacing={2}>
@@ -123,9 +92,7 @@ function App() {
             <Card
             align="center"
             sx={{
-              backgroundImage: darkMode 
-                ? `linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url("https://res.cloudinary.com/assurily/image/upload/c_scale,w_1280/v1638896303/garynyedotcom/IMG_8491_i3o9cq.webp")`
-                : `url("https://res.cloudinary.com/assurily/image/upload/c_scale,w_1280/v1638896303/garynyedotcom/IMG_8491_i3o9cq.webp")`,
+              backgroundImage: `linear-gradient(rgba(0,0,0,0.42), rgba(0,0,0,0.42)), url("${HERO_IMAGE_URL}")`,
               boxShadow: 1,
               borderRadius: 1,
               p: 2,
@@ -157,15 +124,6 @@ function App() {
               >
                 <Button variant="contained">Email Me</Button>
               </a>
-              <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center', mt: 2 }}>
-                {darkMode ? <Brightness4Icon sx={{ color: 'common.white' }} /> : <Brightness7Icon sx={{ color: 'common.white' }} />}
-                <Switch
-                  checked={darkMode}
-                  inputProps={{ "aria-label": "Toggle dark mode", role: "switch" }}
-                  onChange={handleThemeChange}
-                  sx={{ color: 'common.white' }}
-                />
-              </Box>
             </CardContent>
           </Card>
         </Grid>
@@ -196,16 +154,32 @@ function App() {
 
         <Grid item={true} xs={0} sm={2}></Grid>
         <Grid item={true} xs={12} sm={2}>
-          <Card sx={{ margin: 2, maxWidth: 150, backgroundColor: "background.paper" }}>
-            <CardMedia
-              component="img"
-              image="/hearclara-logo.svg"
-              alt="HearClara"
-            />
-          </Card>
+          <Box
+            component="a"
+            href={HEAR_CLARA_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            sx={{ display: "block", textDecoration: "none" }}
+          >
+            <Card sx={{ margin: 2, maxWidth: 150, backgroundColor: "background.paper" }}>
+              <CardMedia
+                component="img"
+                image="/hearclara-logo.svg"
+                alt="HearClara"
+              />
+            </Card>
+          </Box>
         </Grid>
         <Grid item={true} xs={12} sm={6}>
-          <Typography variant="h5" color="primary.main">
+          <Typography
+            component="a"
+            href={HEAR_CLARA_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            variant="h5"
+            color="primary.main"
+            sx={{ display: "inline-block", textDecoration: "none" }}
+          >
             HearClara
           </Typography>
           <Typography variant="h6" color="secondary.main">
