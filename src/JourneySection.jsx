@@ -7,19 +7,10 @@ import Card from "@mui/material/Card";
 import CardMedia from "@mui/material/CardMedia";
 import List from "@mui/material/List";
 import ListItem from "@mui/material/ListItem";
-import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
 import SvgIcon from "@mui/material/SvgIcon";
 import Typography from "@mui/material/Typography";
 import { journeyEntries } from "./journeyData";
-
-function ArrowCircleRightIcon(props) {
-  return (
-    <SvgIcon {...props}>
-      <path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20Zm0 18a8 8 0 1 1 0-16 8 8 0 0 1 0 16Zm1-13-1.41 1.41L14.17 11H7v2h7.17l-2.58 2.59L13 17l5-5-5-5Z" />
-    </SvgIcon>
-  );
-}
 
 function ExpandMoreIcon(props) {
   return (
@@ -70,9 +61,6 @@ function RoleHighlights({ highlights }) {
     <List dense className="journey-highlight-list">
       {highlights.map((highlight) => (
         <ListItem key={highlight} className="journey-highlight-item">
-          <ListItemIcon className="journey-highlight-icon">
-            <ArrowCircleRightIcon />
-          </ListItemIcon>
           <ListItemText primary={highlight} />
         </ListItem>
       ))}
@@ -126,33 +114,38 @@ function JourneyRole({ entry, role, roleIndex }) {
 
 function JourneyEntry({ entry }) {
   const companyName = (
-    <Typography variant="h5" component="span" className="journey-company-name lighting-border">
+    <Typography variant="h5" component="span" className="journey-company-name">
       {entry.company}
     </Typography>
   );
 
   return (
     <Box className="journey-entry">
+      <Box className="journey-logo-slot journey-logo-slot--desktop">
+        <JourneyLogo entry={entry} />
+      </Box>
       <Box className="journey-rail" aria-hidden="true">
         <span className="journey-node" />
       </Box>
-      <Box className="journey-logo-slot">
-        <JourneyLogo entry={entry} />
-      </Box>
       <Box className="journey-content">
-        {entry.href ? (
-          <Box
-            component="a"
-            href={entry.href}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="journey-company-link"
-          >
-            {companyName}
+        <Box className="journey-company-row">
+          <Box className="journey-logo-slot journey-logo-slot--mobile">
+            <JourneyLogo entry={entry} />
           </Box>
-        ) : (
-          companyName
-        )}
+          {entry.href ? (
+            <Box
+              component="a"
+              href={entry.href}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="journey-company-link"
+            >
+              {companyName}
+            </Box>
+          ) : (
+            companyName
+          )}
+        </Box>
         {entry.roles.map((role, roleIndex) => (
           <JourneyRole
             key={`${entry.company}-${role.title}`}

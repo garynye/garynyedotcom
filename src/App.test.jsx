@@ -24,7 +24,7 @@ test('links HearClara logo and company name to the website', () => {
 
   const hearClaraLinks = screen.getAllByRole('link', { name: /hearclara/i });
 
-  expect(hearClaraLinks).toHaveLength(2);
+  expect(hearClaraLinks).toHaveLength(3);
   hearClaraLinks.forEach((link) => {
     expect(link.getAttribute('href')).toBe('https://hearclara.com');
     expect(link.getAttribute('target')).toBe('_blank');
