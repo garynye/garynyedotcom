@@ -1,4 +1,4 @@
-import { render, screen, waitFor } from '@testing-library/react';
+import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import App from './App.jsx';
 
@@ -52,7 +52,7 @@ test('renders the premium journey section with accordion summaries', () => {
   expect(screen.getByText(/Bridgestone Mobility Solutions is a business unit/i)).toBeTruthy();
 });
 
-test('unmounts journey accordion details after collapse so page height can shrink', async () => {
+test('keeps journey accordion details in a hidden animated region after collapse', async () => {
   const user = userEvent.setup();
 
   render(<App />);
@@ -61,19 +61,20 @@ test('unmounts journey accordion details after collapse so page height can shrin
     name: /Bootstrapped and developed HearClara/i,
   });
   const highlight = /Returned to my engineering roots/i;
+  const details = document.getElementById(summary.getAttribute('aria-controls'));
 
-  expect(screen.queryByText(highlight)).toBeNull();
+  expect(details).toBeTruthy();
   expect(summary.getAttribute('aria-expanded')).toBe('false');
+  expect(details.getAttribute('aria-hidden')).toBe('true');
 
   await user.click(summary);
 
-  expect(await screen.findByText(highlight)).toBeTruthy();
+  expect(screen.getByText(highlight)).toBeTruthy();
   expect(summary.getAttribute('aria-expanded')).toBe('true');
+  expect(details.getAttribute('aria-hidden')).toBe('false');
 
   await user.click(summary);
 
-  await waitFor(() => {
-    expect(screen.queryByText(highlight)).toBeNull();
-  });
   expect(summary.getAttribute('aria-expanded')).toBe('false');
+  expect(details.getAttribute('aria-hidden')).toBe('true');
 });

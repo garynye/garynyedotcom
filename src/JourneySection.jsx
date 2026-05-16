@@ -85,16 +85,19 @@ function JourneyAccordion({ detailsId, headerId, summary, highlights }) {
         </Typography>
         <ExpandMoreIcon aria-hidden="true" className="journey-accordion-icon" />
       </Box>
-      {isExpanded ? (
+      <Box
+        id={detailsId}
+        role="region"
+        aria-labelledby={headerId}
+        aria-hidden={!isExpanded}
+        className="journey-accordion-details-shell"
+      >
         <Box
-          id={detailsId}
-          role="region"
-          aria-labelledby={headerId}
           className="journey-accordion-details"
         >
           <RoleHighlights highlights={highlights} />
         </Box>
-      ) : null}
+      </Box>
     </Box>
   );
 }
