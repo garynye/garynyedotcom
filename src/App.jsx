@@ -96,7 +96,6 @@ function App() {
           </Grid>
         </Grid>
         <JourneySection />
-        <Box sx={{ height: 300 }} />
       </div>
     </ThemeProvider>
   );
