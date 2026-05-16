@@ -1,4 +1,5 @@
-import { render, screen } from '@testing-library/react';
+import { render, screen, waitFor } from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
 import App from './App.jsx';
 
 // Mock matchMedia
@@ -49,4 +50,27 @@ test('renders the premium journey section with accordion summaries', () => {
   expect(screen.getByText(/Bootstrapped and developed HearClara/i)).toBeTruthy();
   expect(screen.getByText(/Directed enterprise-wide operations and supply chain strategy/i)).toBeTruthy();
   expect(screen.getByText(/Bridgestone Mobility Solutions is a business unit/i)).toBeTruthy();
+});
+
+test('unmounts journey accordion details after collapse so page height can shrink', async () => {
+  const user = userEvent.setup();
+
+  render(<App />);
+
+  const summary = screen.getByRole('button', {
+    name: /Bootstrapped and developed HearClara/i,
+  });
+  const highlight = /Returned to my engineering roots/i;
+
+  expect(screen.queryByText(highlight)).toBeNull();
+
+  await user.click(summary);
+
+  expect(await screen.findByText(highlight)).toBeTruthy();
+
+  await user.click(summary);
+
+  await waitFor(() => {
+    expect(screen.queryByText(highlight)).toBeNull();
+  });
 });

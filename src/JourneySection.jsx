@@ -79,7 +79,11 @@ function RoleDetails({ entry, role, roleIndex }) {
     return (
       <Box className="journey-shimmer-shell">
         <Box aria-hidden="true" className="journey-shimmer-spinner" />
-        <Accordion disableGutters className="journey-accordion">
+        <Accordion
+          disableGutters
+          className="journey-accordion"
+          TransitionProps={{ mountOnEnter: true, unmountOnExit: true }}
+        >
           <AccordionSummary
             expandIcon={<ExpandMoreIcon />}
             aria-controls={`${roleId}-content`}
