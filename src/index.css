@@ -19,6 +19,7 @@ code {
 .hero-card {
   position: relative;
   overflow: hidden;
+  z-index: 0;
 }
 
 .hero-card::after {
@@ -33,10 +34,13 @@ code {
 }
 
 .journey-section {
+  --journey-overlap: clamp(5rem, 12vh, 8rem);
+
   position: relative;
+  z-index: 1;
   overflow: hidden;
-  margin-top: -1px;
-  padding: 3.35rem 1.25rem 1rem;
+  margin-top: calc(-1 * var(--journey-overlap));
+  padding: clamp(1.55rem, 4.2vh, 2.2rem) 1.25rem 1rem;
   background:
     linear-gradient(180deg, #070b10 0%, rgba(12, 19, 27, 0.36) 22%, rgba(7, 11, 16, 0) 100%),
     repeating-linear-gradient(90deg, rgba(255, 255, 255, 0.012) 0 1px, transparent 1px 72px);
@@ -429,8 +433,14 @@ code {
 
 @media (max-width: 640px) {
   .journey-section {
-    padding-top: 2.7rem;
+    --journey-overlap: clamp(8rem, 22vh, 11rem);
+
+    padding-top: 1.45rem;
     padding-inline: 0.85rem;
+  }
+
+  .journey-heading-wrap {
+    margin-bottom: 2.45rem;
   }
 
   .journey-heading {
