@@ -1,8 +1,5 @@
 import * as React from "react";
-import { useEffect } from "react";
-import Accordion from "@mui/material/Accordion";
-import AccordionDetails from "@mui/material/AccordionDetails";
-import AccordionSummary from "@mui/material/AccordionSummary";
+import { useEffect, useState } from "react";
 import Box from "@mui/material/Box";
 import Card from "@mui/material/Card";
 import CardMedia from "@mui/material/CardMedia";
@@ -69,6 +66,39 @@ function RoleHighlights({ highlights }) {
   );
 }
 
+function JourneyAccordion({ detailsId, headerId, summary, highlights }) {
+  const [isExpanded, setIsExpanded] = useState(false);
+
+  return (
+    <Box className={`journey-accordion${isExpanded ? " journey-accordion--expanded" : ""}`}>
+      <Box
+        component="button"
+        type="button"
+        className="journey-accordion-summary"
+        aria-expanded={isExpanded}
+        aria-controls={detailsId}
+        id={headerId}
+        onClick={() => setIsExpanded((current) => !current)}
+      >
+        <Typography variant="body2" className="journey-summary-copy">
+          {summary}
+        </Typography>
+        <ExpandMoreIcon aria-hidden="true" className="journey-accordion-icon" />
+      </Box>
+      {isExpanded ? (
+        <Box
+          id={detailsId}
+          role="region"
+          aria-labelledby={headerId}
+          className="journey-accordion-details"
+        >
+          <RoleHighlights highlights={highlights} />
+        </Box>
+      ) : null}
+    </Box>
+  );
+}
+
 function RoleDetails({ entry, role, roleIndex }) {
   const roleId = `${entry.company}-${role.title}`
     .toLowerCase()
@@ -79,24 +109,12 @@ function RoleDetails({ entry, role, roleIndex }) {
     return (
       <Box className="journey-shimmer-shell">
         <Box aria-hidden="true" className="journey-shimmer-spinner" />
-        <Accordion
-          disableGutters
-          className="journey-accordion"
-          TransitionProps={{ mountOnEnter: true, unmountOnExit: true }}
-        >
-          <AccordionSummary
-            expandIcon={<ExpandMoreIcon />}
-            aria-controls={`${roleId}-content`}
-            id={`${roleId}-header`}
-          >
-            <Typography variant="body2" className="journey-summary-copy">
-              {role.summary}
-            </Typography>
-          </AccordionSummary>
-          <AccordionDetails>
-            <RoleHighlights highlights={role.highlights} />
-          </AccordionDetails>
-        </Accordion>
+        <JourneyAccordion
+          detailsId={`${roleId}-content`}
+          headerId={`${roleId}-header`}
+          summary={role.summary}
+          highlights={role.highlights}
+        />
       </Box>
     );
   }

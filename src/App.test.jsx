@@ -63,14 +63,17 @@ test('unmounts journey accordion details after collapse so page height can shrin
   const highlight = /Returned to my engineering roots/i;
 
   expect(screen.queryByText(highlight)).toBeNull();
+  expect(summary.getAttribute('aria-expanded')).toBe('false');
 
   await user.click(summary);
 
   expect(await screen.findByText(highlight)).toBeTruthy();
+  expect(summary.getAttribute('aria-expanded')).toBe('true');
 
   await user.click(summary);
 
   await waitFor(() => {
     expect(screen.queryByText(highlight)).toBeNull();
   });
+  expect(summary.getAttribute('aria-expanded')).toBe('false');
 });
