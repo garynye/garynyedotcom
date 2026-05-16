@@ -66,7 +66,7 @@ function App() {
                 boxShadow: "none",
                 borderRadius: 0,
                 p: 2,
-                height: isMobile ? window.innerHeight : 0.6 * window.innerHeight,
+                height: isMobile ? window.innerHeight : 0.68 * window.innerHeight,
                 backgroundPosition: isMobile ? "31% 0%" : "0% 0%",
                 backgroundSize: "cover",
                 backgroundRepeat: "no-repeat",

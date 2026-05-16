@@ -26,15 +26,23 @@ code {
   content: "";
   position: absolute;
   inset: auto 0 0;
-  height: min(28vh, 260px);
+  height: min(38vh, 340px);
   pointer-events: none;
   background:
-    linear-gradient(180deg, rgba(7, 11, 16, 0), rgba(7, 11, 16, 0.78) 68%, #070b10 100%),
+    linear-gradient(
+      180deg,
+      rgba(7, 11, 16, 0),
+      rgba(7, 11, 16, 0.34) 48%,
+      rgba(7, 11, 16, 0.84) 82%,
+      #070b10 100%
+    ),
     radial-gradient(ellipse at 50% 100%, rgba(77, 217, 245, 0.08), transparent 58%);
+  -webkit-mask-image: linear-gradient(180deg, transparent 0, #000 18%, #000 100%);
+  mask-image: linear-gradient(180deg, transparent 0, #000 18%, #000 100%);
 }
 
 .journey-section {
-  --journey-overlap: clamp(5rem, 12vh, 8rem);
+  --journey-overlap: clamp(7rem, 20vh, 13rem);
 
   position: relative;
   z-index: 1;
@@ -42,7 +50,15 @@ code {
   margin-top: calc(-1 * var(--journey-overlap));
   padding: clamp(1.55rem, 4.2vh, 2.2rem) 1.25rem 1rem;
   background:
-    linear-gradient(180deg, #070b10 0%, rgba(12, 19, 27, 0.36) 22%, rgba(7, 11, 16, 0) 100%),
+    linear-gradient(
+      180deg,
+      rgba(7, 11, 16, 0) 0,
+      rgba(7, 11, 16, 0.3) 4rem,
+      rgba(7, 11, 16, 0.76) 8.75rem,
+      #070b10 15rem,
+      rgba(12, 19, 27, 0.36) 26rem,
+      rgba(7, 11, 16, 0) 100%
+    ),
     repeating-linear-gradient(90deg, rgba(255, 255, 255, 0.012) 0 1px, transparent 1px 72px);
 }
 
