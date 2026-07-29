@@ -142,13 +142,20 @@
 
 .hero-introduction {
   max-width: 33rem;
-  padding-top: 1.8rem;
-  margin: 1.8rem 0 0;
+  margin: 1.35rem 0 0;
   color: #aeb9c0;
   font-size: clamp(0.98rem, 1.1vw, 1.12rem);
   font-weight: 300;
   line-height: 1.72;
-  border-top: 2px solid var(--brass);
+}
+
+.hero-introduction::before {
+  display: block;
+  width: 3.5rem;
+  height: 2px;
+  margin-bottom: 1.55rem;
+  content: "";
+  background: var(--brass);
 }
 
 .hero-links {
@@ -228,7 +235,6 @@
 
 .studio-products {
   padding-left: clamp(2.5rem, 4vw, 5rem);
-  border-top: 1px solid var(--hairline);
   border-left: 1px solid var(--hairline);
 }
 
@@ -242,17 +248,23 @@
   border-bottom: 1px solid var(--hairline);
 }
 
+.studio-product:first-child {
+  border-top: 1px solid var(--hairline);
+}
+
 .studio-product-artwork {
   width: 112px;
   height: 112px;
-  padding: 0.55rem;
-  object-fit: contain;
-  border: 1px solid rgba(242, 239, 232, 0.14);
-  background: #10171e;
+  padding: 0;
+  object-fit: cover;
+  overflow: hidden;
+  border: 0;
+  border-radius: 12px;
+  background: transparent;
+  box-shadow: none;
 }
 
 .studio-product:nth-child(3) .studio-product-artwork {
-  padding: 0;
   object-fit: cover;
 }
 

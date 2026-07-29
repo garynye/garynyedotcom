@@ -48,7 +48,7 @@ export default function StudioSection() {
     <section id="studio" className="studio-section" aria-labelledby="studio-heading">
       <div className="studio-introduction">
         <p className="section-kicker">Studio</p>
-        <h2 id="studio-heading">Curious Ventures</h2>
+        <h2 id="studio-heading">Curious Ventures LLC</h2>
         <p className="studio-summary">
           My independent product studio for practical AI and thoughtfully
           engineered software.

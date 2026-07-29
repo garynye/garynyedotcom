@@ -82,12 +82,14 @@ test("exposes the same navigation destinations and closes the mobile menu", asyn
   );
 });
 
-test("renders Curious Ventures and its three products with honest maturity labels", () => {
+test("renders Curious Ventures LLC and its three products with honest maturity labels", () => {
   render(<App />);
 
   const studio = document.getElementById("studio");
   expect(studio).toBeTruthy();
-  expect(within(studio).getByRole("heading", { name: "Curious Ventures" })).toBeTruthy();
+  expect(
+    within(studio).getByRole("heading", { name: "Curious Ventures LLC" })
+  ).toBeTruthy();
   expect(within(studio).getByText("Founder & Managing Member")).toBeTruthy();
   expect(within(studio).getByRole("heading", { name: "HearClara" })).toBeTruthy();
   expect(within(studio).getByRole("heading", { name: "Rosie" })).toBeTruthy();
