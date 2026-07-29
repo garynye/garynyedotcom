@@ -9,6 +9,7 @@ import ListItemText from "@mui/material/ListItemText";
 import SvgIcon from "@mui/material/SvgIcon";
 import Typography from "@mui/material/Typography";
 import { journeyEntries } from "./journeyData";
+import "./JourneySection.css";
 
 function ExpandMoreIcon(props) {
   return (
@@ -27,6 +28,10 @@ function RemoveIcon(props) {
 }
 
 function JourneyLogo({ entry }) {
+  if (!entry.logo) {
+    return null;
+  }
+
   const logo = (
     <Card className="journey-logo-card">
       <CardMedia component="img" image={entry.logo} alt={entry.logoAlt} />
@@ -217,10 +222,18 @@ export default function JourneySection() {
   }, []);
 
   return (
-    <Box component="section" className="journey-section" aria-labelledby="journey-heading">
+    <Box
+      component="section"
+      id="journey"
+      className="journey-section"
+      aria-labelledby="journey-heading"
+    >
       <Box className="journey-heading-wrap">
+        <Typography component="p" className="section-kicker">
+          Journey
+        </Typography>
         <Typography variant="h4" component="h2" id="journey-heading" className="journey-heading">
-          <RemoveIcon aria-hidden="true" /> My journey <RemoveIcon aria-hidden="true" />
+          <RemoveIcon aria-hidden="true" /> Career journey <RemoveIcon aria-hidden="true" />
         </Typography>
       </Box>
       <Box className="journey-timeline">

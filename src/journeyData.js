@@ -1,21 +1,16 @@
-export const HEAR_CLARA_URL = "https://hearclara.com";
-
 export const journeyEntries = [
   {
-    company: "HearClara",
-    logo: "/hearclara-logo.svg",
-    logoAlt: "HearClara",
-    href: HEAR_CLARA_URL,
+    company: "Curious Ventures LLC",
     roles: [
       {
-        title: "Founder & Developer",
-        meta: "Mar 2026 - Present",
+        title: "Founder & Managing Member",
+        meta: "Current",
         summary:
-          "Bootstrapped and developed HearClara, a premium, audio-first language acquisition platform designed to solve the short-term working memory bottleneck in adult learners.",
+          "Building practical, thoughtfully engineered software through an independent product studio spanning language learning, product specification, and local-first household coordination.",
         highlights: [
-          "Returned to my engineering roots to architect a proprietary Neural Memory Model that dynamically paces cognitive load.",
-          "Paired the learning model with Clara, an AI-driven tutor delivering 100+ hours of high-fidelity, native audio immersion.",
-          "Engineered the full stack, including cloud infrastructure, LLM integrations, and a custom subscription billing engine to keep unit economics lean from Day 1.",
+          "HearClara: an audio-first language acquisition platform designed around adult working-memory limits.",
+          "AppSpec Studio: a desktop workflow for turning rough app ideas into implementation-ready specifications.",
+          "Rosie: a local-first household assistant for calendars, reminders, voice, and everyday coordination.",
         ],
       },
     ],
@@ -53,7 +48,7 @@ export const journeyEntries = [
           "Managed the Mileage Sales business unit with over 150 hourly and salaried employees in operations and sales across the US and Canada to maintain a 36% gross margin on a $55M P&L.",
           "Developed strategic partnership & investment with reach24.net to digitize the dispatching process for emergency and planned events resulting in improved downtime from 2hr 40min to under 2hr in emergencies.",
           "Outsourced emergency response organization resulting in a single staffing model, a 15% improvement in operating budget, and reduction of 30 headcount.",
-          "Deployed iTrack II, a mining telematics solution, across the US and Canada to close a completive gap in Bridgestone’s portfolio leading to the full acquisition of the company.",
+          "Deployed iTrack II, a mining telematics solution, across the US and Canada to close a competitive gap in Bridgestone’s portfolio, leading to the full acquisition of the company.",
           "Launched Bridgestone Intellitire Tire Pressure System to improve fleet uptime by up 46% through preemptive pressure loss detection and through linkage into reach24.net for emergency detection and service dispatching through a direct salesforce and reseller network.",
           "Partnered with Amazon AWS digital innovation group to launch myuptimeauto.com, a freemium fleet maintenance service, to solve a small business owner (SBO) need around vehicle maintenance to improve SBO uptime and revenue for Bridgestone.",
         ],
@@ -156,7 +151,7 @@ export const journeyEntries = [
     ],
   },
   {
-    company: "Univeristy of Michigan - Ross School of Business",
+    company: "University of Michigan - Ross School of Business",
     logo:
       "https://res.cloudinary.com/assurily/image/upload/v1670619243/garynyedotcom/ross_rqqijd.jpg",
     logoAlt: "UM",

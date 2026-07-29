@@ -1,80 +1,177 @@
-import { render, screen } from '@testing-library/react';
-import userEvent from '@testing-library/user-event';
-import App from './App.jsx';
+import { render, screen, within } from "@testing-library/react";
+import userEvent from "@testing-library/user-event";
+import App from "./App.jsx";
 
-// Mock matchMedia
 beforeAll(() => {
-  window.matchMedia = window.matchMedia || function() {
-    return {
-      matches: false,
-      addListener: function() {},
-      removeListener: function() {}
+  window.matchMedia =
+    window.matchMedia ||
+    function matchMedia() {
+      return {
+        matches: false,
+        addListener() {},
+        removeListener() {},
+      };
     };
-  };
 });
 
-test('uses dark mode without rendering a theme switch', () => {
+test("uses dark mode without rendering a theme switch", () => {
   render(<App />);
 
-  expect(screen.queryByRole('switch')).toBeNull();
-  expect(getComputedStyle(document.body).backgroundColor).toBe('rgb(7, 11, 16)');
+  expect(screen.queryByRole("switch")).toBeNull();
+  expect(getComputedStyle(document.body).backgroundColor).toBe("rgb(7, 11, 16)");
 });
 
-test('links HearClara logo and company name to the website', () => {
+test("renders the new personal positioning without the discarded tagline", () => {
   render(<App />);
 
-  const hearClaraLinks = screen.getAllByRole('link', { name: /hearclara/i });
-
-  expect(hearClaraLinks).toHaveLength(3);
-  hearClaraLinks.forEach((link) => {
-    expect(link.getAttribute('href')).toBe('https://hearclara.com');
-    expect(link.getAttribute('target')).toBe('_blank');
-    expect(link.getAttribute('rel')).toBe('noopener noreferrer');
-  });
+  expect(screen.getByRole("heading", { name: "Gary Nye", level: 1 })).toBeTruthy();
+  expect(
+    screen.getByText("I build products and lead complex businesses.")
+  ).toBeTruthy();
+  expect(
+    screen.getByText(/After two decades in global operations/i)
+  ).toBeTruthy();
+  expect(screen.queryByText(/Builder\. Operator\. Founder\./i)).toBeNull();
 });
 
-test('renders post-Bridgestone experience entries', () => {
-  render(<App />);
-
-  expect(screen.getAllByText('HearClara').length).toBeGreaterThan(0);
-  expect(screen.getByText('Founder & Developer')).toBeTruthy();
-  expect(screen.queryByText('Operating Partner | Strategy & Operational Execution')).toBeNull();
-  expect(screen.getAllByText('Thermo Fisher Scientific').length).toBeGreaterThan(0);
-  expect(screen.getByText('Senior Director of Operations')).toBeTruthy();
-});
-
-test('renders the premium journey section with accordion summaries', () => {
-  render(<App />);
-
-  expect(screen.getByRole('region', { name: /my journey/i })).toBeTruthy();
-  expect(screen.getByText(/Bootstrapped and developed HearClara/i)).toBeTruthy();
-  expect(screen.getByText(/Directed enterprise-wide operations and supply chain strategy/i)).toBeTruthy();
-  expect(screen.getByText(/Bridgestone Mobility Solutions is a business unit/i)).toBeTruthy();
-});
-
-test('keeps journey accordion details in a hidden animated region after collapse', async () => {
+test("exposes the same navigation destinations and closes the mobile menu", async () => {
   const user = userEvent.setup();
-
   render(<App />);
 
-  const summary = screen.getByRole('button', {
-    name: /Bootstrapped and developed HearClara/i,
+  const desktopNavigation = screen.getByRole("navigation", {
+    name: "Primary navigation",
   });
-  const highlight = /Returned to my engineering roots/i;
-  const details = document.getElementById(summary.getAttribute('aria-controls'));
+  const expectedDestinations = {
+    Work: "#work",
+    Studio: "#studio",
+    Journey: "#journey",
+    About: "#about",
+    Contact: "#contact",
+  };
 
-  expect(details).toBeTruthy();
-  expect(summary.getAttribute('aria-expanded')).toBe('false');
-  expect(details.getAttribute('aria-hidden')).toBe('true');
+  Object.entries(expectedDestinations).forEach(([label, href]) => {
+    expect(
+      within(desktopNavigation).getByRole("link", { name: label }).getAttribute("href")
+    ).toBe(href);
+  });
+
+  const menuButton = screen.getByRole("button", { name: "Menu" });
+  expect(menuButton.getAttribute("aria-expanded")).toBe("false");
+
+  await user.click(menuButton);
+
+  const mobileNavigation = screen.getByRole("navigation", {
+    name: "Mobile navigation",
+  });
+  expect(screen.getByRole("button", { name: "Close" }).getAttribute("aria-expanded")).toBe(
+    "true"
+  );
+  Object.keys(expectedDestinations).forEach((label) => {
+    expect(within(mobileNavigation).getByRole("link", { name: label })).toBeTruthy();
+  });
+
+  await user.click(within(mobileNavigation).getByRole("link", { name: "Studio" }));
+
+  expect(screen.queryByRole("navigation", { name: "Mobile navigation" })).toBeNull();
+  expect(screen.getByRole("button", { name: "Menu" }).getAttribute("aria-expanded")).toBe(
+    "false"
+  );
+});
+
+test("renders Curious Ventures and its three products with honest maturity labels", () => {
+  render(<App />);
+
+  const studio = document.getElementById("studio");
+  expect(studio).toBeTruthy();
+  expect(within(studio).getByRole("heading", { name: "Curious Ventures" })).toBeTruthy();
+  expect(within(studio).getByText("Founder & Managing Member")).toBeTruthy();
+  expect(within(studio).getByRole("heading", { name: "HearClara" })).toBeTruthy();
+  expect(within(studio).getByRole("heading", { name: "Rosie" })).toBeTruthy();
+  expect(within(studio).getByRole("heading", { name: "AppSpec Studio" })).toBeTruthy();
+  expect(within(studio).getByText("Live")).toBeTruthy();
+  expect(within(studio).getAllByText("In development")).toHaveLength(2);
+
+  within(studio)
+    .getAllByRole("link", { name: /HearClara/i })
+    .forEach((link) => {
+      expect(link.getAttribute("href")).toBe("https://hearclara.com");
+      expect(link.getAttribute("target")).toBe("_blank");
+      expect(link.getAttribute("rel")).toBe("noopener noreferrer");
+    });
+});
+
+test("uses the real Rosie icon and the generated AppSpec artwork", () => {
+  render(<App />);
+
+  const rosie = screen.getByRole("img", { name: "Rosie application icon" });
+  const appSpec = screen.getByRole("img", {
+    name: /Layered specification sheets and interface blueprints/i,
+  });
+
+  expect(rosie.getAttribute("src")).toBe("/rosie-icon.png");
+  expect(appSpec.getAttribute("src")).toBe("/appspec-studio-graphic.png");
+});
+
+test("describes House Chase without identifying the child", () => {
+  render(<App />);
+
+  expect(
+    screen.getByText(
+      "A game imagined and designed by a young child, then brought to life through collaborative coding."
+    )
+  ).toBeTruthy();
+  expect(document.body.textContent).not.toMatch(/\bMax\b/i);
+});
+
+test("never links to private household services", () => {
+  render(<App />);
+
+  const privateTokens = [
+    "whisper",
+    "plex",
+    "radar",
+    "sonar",
+    "sab",
+    "cbd",
+    "crocaro",
+  ];
+  const hrefs = screen
+    .getAllByRole("link")
+    .map((link) => (link.getAttribute("href") || "").toLowerCase());
+
+  privateTokens.forEach((token) => {
+    expect(hrefs.some((href) => href.includes(token))).toBe(false);
+  });
+});
+
+test("keeps the Curious Ventures entry and corporate journey accordions working", async () => {
+  const user = userEvent.setup();
+  render(<App />);
+
+  const journey = screen.getByRole("region", { name: "Career journey" });
+  expect(within(journey).getByText("Curious Ventures LLC")).toBeTruthy();
+  expect(within(journey).getByText("Founder & Managing Member")).toBeTruthy();
+  expect(within(journey).getByText("Current")).toBeTruthy();
+  expect(within(journey).getByText("Thermo Fisher Scientific")).toBeTruthy();
+
+  const summary = within(journey).getByRole("button", {
+    name: /Building practical, thoughtfully engineered software/i,
+  });
+  const details = document.getElementById(summary.getAttribute("aria-controls"));
+
+  expect(summary.getAttribute("aria-expanded")).toBe("false");
+  expect(details.getAttribute("aria-hidden")).toBe("true");
 
   await user.click(summary);
 
-  expect(screen.getByText(highlight)).toBeTruthy();
-  expect(summary.getAttribute('aria-expanded')).toBe('true');
-  expect(details.getAttribute('aria-hidden')).toBe('false');
+  expect(
+    within(journey).getByText(/HearClara: an audio-first language acquisition platform/i)
+  ).toBeTruthy();
+  expect(summary.getAttribute("aria-expanded")).toBe("true");
+  expect(details.getAttribute("aria-hidden")).toBe("false");
 
   await user.click(summary);
 
-  expect(summary.getAttribute('aria-expanded')).toBe('false');
-  expect(details.getAttribute('aria-hidden')).toBe('true');
+  expect(summary.getAttribute("aria-expanded")).toBe("false");
+  expect(details.getAttribute("aria-hidden")).toBe("true");
 });
