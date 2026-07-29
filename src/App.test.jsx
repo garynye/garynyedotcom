@@ -107,9 +107,21 @@ test("uses the real Rosie icon and the generated AppSpec artwork", () => {
   const appSpec = screen.getByRole("img", {
     name: /Layered specification sheets and interface blueprints/i,
   });
+  const whisper = screen.getByRole("img", {
+    name: "Windows Whisper Client application icon",
+  });
+  const icelandWalk = screen.getByRole("img", {
+    name: /Reykjavík street featured in the IcelandWalk/i,
+  });
+  const houseChase = screen.getByRole("img", {
+    name: /isometric house interior illustrating the playful chase concept/i,
+  });
 
   expect(rosie.getAttribute("src")).toBe("/rosie-icon.png");
   expect(appSpec.getAttribute("src")).toBe("/appspec-studio-graphic.png");
+  expect(whisper.getAttribute("src")).toBe("/windows-whisper-icon.png");
+  expect(icelandWalk.getAttribute("src")).toBe("/icelandwalk-graphic.webp");
+  expect(houseChase.getAttribute("src")).toBe("/house-chase-graphic.png");
 });
 
 test("describes House Chase without identifying the child", () => {

@@ -18,9 +18,17 @@ function ProjectLink({ project }) {
   );
 }
 
-function TextProject({ project }) {
+function ProjectCard({ project }) {
+  const artworkClass =
+    project.name === "Windows Whisper Client"
+      ? "project-card-artwork project-card-artwork--icon"
+      : "project-card-artwork";
+
   return (
-    <article className="text-project">
+    <article className="project-card">
+      <figure className={artworkClass}>
+        <img src={project.artwork} alt={project.artworkAlt} />
+      </figure>
       <p className="project-status">{project.status}</p>
       <h3>{project.name}</h3>
       <p>{project.description}</p>
@@ -30,30 +38,17 @@ function TextProject({ project }) {
 }
 
 export default function SelectedWorkSection() {
-  const [familyHistory, ...textProjects] = selectedProjects;
-
   return (
     <section id="work" className="selected-work-section" aria-labelledby="work-heading">
       <div className="selected-work-heading">
-        <p className="section-kicker">Selected work beyond the studio</p>
+        <p className="section-kicker">Selected projects beyond the studio</p>
         <h2 id="work-heading">Ideas, products, and experiences.</h2>
+        <span aria-hidden="true" />
       </div>
 
-      <article className="featured-project">
-        <figure className="featured-project-image">
-          <img src={familyHistory.artwork} alt={familyHistory.artworkAlt} />
-        </figure>
-        <div className="featured-project-copy">
-          <p className="project-status">{familyHistory.status}</p>
-          <h3>{familyHistory.name}</h3>
-          <p>{familyHistory.description}</p>
-          <ProjectLink project={familyHistory} />
-        </div>
-      </article>
-
-      <div className="text-project-grid">
-        {textProjects.map((project) => (
-          <TextProject key={project.name} project={project} />
+      <div className="project-card-grid">
+        {selectedProjects.map((project) => (
+          <ProjectCard key={project.name} project={project} />
         ))}
       </div>
 

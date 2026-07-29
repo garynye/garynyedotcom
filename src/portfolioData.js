@@ -57,8 +57,8 @@ export const selectedProjects = [
       "A Windows desktop client for private speech-to-text and practical remote-work workflows.",
     status: "Personal utility",
     href: null,
-    artwork: null,
-    artworkAlt: null,
+    artwork: "/windows-whisper-icon.png",
+    artworkAlt: "Windows Whisper Client application icon",
     linkLabel: null,
   },
   {
@@ -66,8 +66,8 @@ export const selectedProjects = [
     description: "An offline narrated walking guide to Reykjavík.",
     status: "Open source",
     href: "https://github.com/garynye/IcelandWalk",
-    artwork: null,
-    artworkAlt: null,
+    artwork: "/icelandwalk-graphic.webp",
+    artworkAlt: "A Reykjavík street featured in the IcelandWalk narrated guide",
     linkLabel: "View on GitHub",
   },
   {
@@ -76,8 +76,9 @@ export const selectedProjects = [
       "A game imagined and designed by a young child, then brought to life through collaborative coding.",
     status: "Learning project",
     href: null,
-    artwork: null,
-    artworkAlt: null,
+    artwork: "/house-chase-graphic.png",
+    artworkAlt:
+      "An isometric house interior illustrating the playful chase concept in House Chase",
     linkLabel: null,
   },
 ];

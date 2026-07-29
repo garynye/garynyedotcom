@@ -1,5 +1,5 @@
 .journey-section {
-  padding: clamp(6rem, 10vw, 10rem) 2rem;
+  padding: clamp(5.5rem, 7vw, 8rem) 2rem;
   color: var(--paper);
   background:
     radial-gradient(circle at 50% 0%, rgba(88, 200, 216, 0.045), transparent 32rem),
@@ -8,7 +8,7 @@
 
 .journey-heading-wrap,
 .journey-timeline {
-  width: min(100%, 1080px);
+  width: min(100%, 1600px);
   margin-inline: auto;
 }
 
