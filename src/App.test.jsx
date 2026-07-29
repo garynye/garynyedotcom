@@ -31,6 +31,10 @@ test("renders the new personal positioning without the discarded tagline", () =>
   expect(
     screen.getByText(/After two decades in global operations/i)
   ).toBeTruthy();
+  expect(document.getElementById("about")?.className).toContain(
+    "hero-introduction"
+  );
+  expect(document.querySelector(".about-statement")).toBeNull();
   expect(screen.queryByText(/Builder\. Operator\. Founder\./i)).toBeNull();
 });
 
