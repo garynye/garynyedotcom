@@ -211,6 +211,13 @@ test("keeps the Curious Ventures entry and corporate journey accordions working"
   expect(within(journey).getByText("Founder & Managing Member")).toBeTruthy();
   expect(within(journey).getByText("Current")).toBeTruthy();
   expect(within(journey).getByText("Thermo Fisher Scientific")).toBeTruthy();
+  const curiousVenturesLogos = within(journey).getAllByRole("img", {
+    name: "Curious Ventures LLC icon",
+  });
+  expect(curiousVenturesLogos).toHaveLength(2);
+  curiousVenturesLogos.forEach((logo) => {
+    expect(logo.getAttribute("src")).toBe("/curious-ventures-icon.png");
+  });
 
   const summary = within(journey).getByRole("button", {
     name: /Building practical, thoughtfully engineered software/i,
@@ -223,8 +230,16 @@ test("keeps the Curious Ventures entry and corporate journey accordions working"
   await user.click(summary);
 
   expect(
-    within(journey).getByText(/HearClara: an audio-first language acquisition platform/i)
-  ).toBeTruthy();
+    within(details)
+      .getAllByRole("listitem")
+      .map((item) => item.textContent)
+  ).toEqual([
+    "HearClara: an audio-first language acquisition platform designed around adult working-memory limits.",
+    "MacSweeper: a native macOS application for reviewing, quarantining, and safely removing application leftovers.",
+    "Windows Whisper Client: a tray-first Windows client for private speech-to-text and remote-work paste workflows.",
+    "AppSpec Studio: a desktop workflow for turning rough app ideas into implementation-ready specifications.",
+    "Rosie: a local-first household assistant for calendars, reminders, voice, and everyday coordination.",
+  ]);
   expect(summary.getAttribute("aria-expanded")).toBe("true");
   expect(details.getAttribute("aria-hidden")).toBe("false");
 

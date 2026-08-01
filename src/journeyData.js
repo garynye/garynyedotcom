@@ -1,14 +1,18 @@
 export const journeyEntries = [
   {
     company: "Curious Ventures LLC",
+    logo: "/curious-ventures-icon.png",
+    logoAlt: "Curious Ventures LLC icon",
     roles: [
       {
         title: "Founder & Managing Member",
         meta: "Current",
         summary:
-          "Building practical, thoughtfully engineered software through an independent product studio spanning language learning, product specification, and local-first household coordination.",
+          "Building practical, thoughtfully engineered software through an independent product studio spanning language learning, private speech-to-text, safe macOS maintenance, product specification, and local-first household coordination.",
         highlights: [
           "HearClara: an audio-first language acquisition platform designed around adult working-memory limits.",
+          "MacSweeper: a native macOS application for reviewing, quarantining, and safely removing application leftovers.",
+          "Windows Whisper Client: a tray-first Windows client for private speech-to-text and remote-work paste workflows.",
           "AppSpec Studio: a desktop workflow for turning rough app ideas into implementation-ready specifications.",
           "Rosie: a local-first household assistant for calendars, reminders, voice, and everyday coordination.",
         ],

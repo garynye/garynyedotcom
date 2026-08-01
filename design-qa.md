@@ -21,6 +21,10 @@
   - Five-product Studio at 390 × 844: `C:\Users\garyn\AppData\Local\Temp\five-product-studio-mobile.png`
   - Studio product rows at 390 × 844: `C:\Users\garyn\AppData\Local\Temp\five-product-rows-mobile.png`
   - Selected-work text row at 390 × 844: `C:\Users\garyn\AppData\Local\Temp\selected-work-text-mobile.png`
+  - Curious Ventures journey entry at 1440 × 1000: `C:\Users\garyn\AppData\Local\Temp\curious-ventures-journey-desktop.png`
+  - Expanded five-product journey bullets at 1440 × 1000: `C:\Users\garyn\AppData\Local\Temp\curious-ventures-journey-expanded-desktop.png`
+  - Curious Ventures journey entry at 390 × 844: `C:\Users\garyn\AppData\Local\Temp\curious-ventures-journey-mobile.png`
+  - Remaining journey bullets at 390 × 844: `C:\Users\garyn\AppData\Local\Temp\curious-ventures-journey-bullets-mobile.png`
 - Local implementation URL: `http://127.0.0.1:4173/`
 - Source pixels: 916 × 1717
 - Primary implementation viewport and pixels: 1078 × 1409 CSS and image pixels, device scale factor 1
@@ -45,6 +49,7 @@ No actionable P0, P1, or P2 findings remain.
 - Image quality and asset fidelity: the portrait uses the authentic hero asset with `object-fit: cover`, a stable 36% horizontal focal point, and a top-aligned crop. The longer lower fade preserves the face and torso while blending the photograph naturally into the page.
 - Copy and content: MacSweeper and Windows Whisper Client now use maturity-appropriate Studio copy and status labels. Private repositories remain unlinked, and the About navigation destination still anchors to the hero introduction.
 - Journey continuity: the company-logo cards again use the previous rounded treatment and soft depth, accordion surfaces have rounded corners, and the expanded highlight list restores the earlier green glowing bullets and row treatment.
+- Journey portfolio alignment: Curious Ventures now has a dedicated navy, brass, and cyan company icon, a five-product studio summary, and one work-history bullet for every current Studio product.
 - Studio-detail fidelity: the public name reads Curious Ventures LLC. All five product assets are clipped to 12-pixel rounded corners with transparent CSS backgrounds, zero surrounding border, and no additional square backing surface.
 - Portfolio hierarchy: HearClara, MacSweeper, Windows Whisper Client, Rosie, and AppSpec Studio appear as five equal Studio rows in maturity order. Family History, IcelandWalk, and House Chase form a three-column illustrated row; DotHider and Customized RustDesk form an equal two-column text row without a secondary category heading.
 - Rule geometry: the product-column container no longer has a top border. The first product row owns the hairline and begins 41 pixels to the right of the vertical divider at the 943-pixel viewport, creating the detached corner visible in the reference.
@@ -61,7 +66,7 @@ Acceptable intentional differences:
 
 - The mobile menu retains Work, Studio, Journey, About, and Contact.
 - The About destination remains valid and lands on the hero introduction.
-- The Curious Ventures journey accordion changes from collapsed to expanded and reveals all three restored bullet rows.
+- The Curious Ventures journey accordion changes from collapsed to expanded and reveals all five current product rows.
 - Company logos remain linked only where public destinations exist.
 - Heading order, landmarks, image alt text, and responsive navigation semantics remain intact.
 - All five Studio images load successfully with descriptive alt text; all public external links retain `_blank` and `noopener noreferrer`.
@@ -96,6 +101,9 @@ Acceptable intentional differences:
 9. P2: MacSweeper and Windows Whisper Client were visually demoted into project tiers that understated their product maturity, while DotHider and Customized RustDesk sat beneath a diminishing small-tools heading.
    - Fix: expanded Curious Ventures LLC to five equal maturity-ordered rows, removed the small-tools tier, and rebuilt selected work as one three-plus-two portfolio section.
    - Post-fix evidence: `five-product-studio-desktop.png`, `selected-work-desktop.png`, `selected-work-text-row-desktop.png`, and the 390-pixel mobile captures.
+10. P2: the Journey entry still summarized only the earlier Studio portfolio and had no dedicated Curious Ventures identity.
+   - Fix: added a purpose-built company icon, expanded the role summary, and aligned the accordion with all five Studio products.
+   - Post-fix evidence: `curious-ventures-journey-desktop.png`, `curious-ventures-journey-expanded-desktop.png`, and the 390-pixel mobile captures.
 
 ## Implementation Checklist
 
@@ -109,6 +117,8 @@ Acceptable intentional differences:
 - [x] Detach the studio product hairline from its vertical divider.
 - [x] Shorten the hero brass rule to match the studio accent.
 - [x] Expand Curious Ventures LLC to five equal maturity-ordered products.
+- [x] Align the Curious Ventures Journey entry with all five Studio products.
+- [x] Add and validate a dedicated Curious Ventures company icon at desktop and mobile sizes.
 - [x] Replace the additional-projects tier with a three-plus-two selected-work layout.
 - [x] Add and validate dedicated MacSweeper artwork at desktop and mobile sizes.
 - [x] Validate desktop, wide, tablet, and mobile layouts.
