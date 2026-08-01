@@ -82,7 +82,7 @@ test("exposes the same navigation destinations and closes the mobile menu", asyn
   );
 });
 
-test("renders Curious Ventures LLC and its three products with honest maturity labels", () => {
+test("renders Curious Ventures LLC and its five products in maturity order", () => {
   render(<App />);
 
   const studio = document.getElementById("studio");
@@ -91,10 +91,20 @@ test("renders Curious Ventures LLC and its three products with honest maturity l
     within(studio).getByRole("heading", { name: "Curious Ventures LLC" })
   ).toBeTruthy();
   expect(within(studio).getByText("Founder & Managing Member")).toBeTruthy();
-  expect(within(studio).getByRole("heading", { name: "HearClara" })).toBeTruthy();
-  expect(within(studio).getByRole("heading", { name: "Rosie" })).toBeTruthy();
-  expect(within(studio).getByRole("heading", { name: "AppSpec Studio" })).toBeTruthy();
+  expect(
+    within(studio)
+      .getAllByRole("heading", { level: 3 })
+      .map((heading) => heading.textContent)
+  ).toEqual([
+    "HearClara",
+    "MacSweeper",
+    "Windows Whisper Client",
+    "Rosie",
+    "AppSpec Studio",
+  ]);
   expect(within(studio).getByText("Live")).toBeTruthy();
+  expect(within(studio).getByText("Release candidate")).toBeTruthy();
+  expect(within(studio).getByText("In use")).toBeTruthy();
   expect(within(studio).getAllByText("In development")).toHaveLength(2);
 
   within(studio)
@@ -106,9 +116,12 @@ test("renders Curious Ventures LLC and its three products with honest maturity l
     });
 });
 
-test("uses the real Rosie icon and the generated AppSpec artwork", () => {
+test("uses the Studio product artwork and selected-project imagery", () => {
   render(<App />);
 
+  const macSweeper = screen.getByRole("img", {
+    name: "MacSweeper application icon",
+  });
   const rosie = screen.getByRole("img", { name: "Rosie application icon" });
   const appSpec = screen.getByRole("img", {
     name: /Layered specification sheets and interface blueprints/i,
@@ -123,11 +136,38 @@ test("uses the real Rosie icon and the generated AppSpec artwork", () => {
     name: /isometric house interior illustrating the playful chase concept/i,
   });
 
+  expect(macSweeper.getAttribute("src")).toBe("/macsweeper-icon.png");
   expect(rosie.getAttribute("src")).toBe("/rosie-icon.png");
   expect(appSpec.getAttribute("src")).toBe("/appspec-studio-graphic.png");
   expect(whisper.getAttribute("src")).toBe("/windows-whisper-icon.png");
   expect(icelandWalk.getAttribute("src")).toBe("/icelandwalk-graphic.webp");
   expect(houseChase.getAttribute("src")).toBe("/house-chase-graphic.png");
+});
+
+test("keeps five selected projects in one section without a small-tools tier", () => {
+  render(<App />);
+
+  const work = document.getElementById("work");
+  expect(
+    within(work)
+      .getAllByRole("heading", { level: 3 })
+      .map((heading) => heading.textContent)
+  ).toEqual([
+    "Family History",
+    "IcelandWalk",
+    "House Chase",
+    "DotHider",
+    "Customized RustDesk",
+  ]);
+  expect(within(work).queryByText("Additional projects")).toBeNull();
+  expect(within(work).queryByText("Small tools. Specific problems.")).toBeNull();
+
+  const links = within(work).getAllByRole("link", { name: "View on GitHub" });
+  expect(links.map((link) => link.getAttribute("href"))).toEqual([
+    "https://github.com/garynye/IcelandWalk",
+    "https://github.com/garynye/hidmacdot-lowmemory",
+    "https://github.com/garynye/rustdesk",
+  ]);
 });
 
 test("describes House Chase without identifying the child", () => {

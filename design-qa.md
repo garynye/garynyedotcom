@@ -15,11 +15,17 @@
   - Mobile journey at 390 × 844: `C:\Users\garyn\AppData\Local\Temp\garynye-journey-rounded-mobile.png`
   - Corrected studio details at 943 × 658: `C:\Users\garyn\AppData\Local\Temp\garynye-studio-tweaks-943.png`
   - Corrected hero rule at 943 × 658: `C:\Users\garyn\AppData\Local\Temp\garynye-hero-rule-943.png`
+  - Five-product Studio at 1440 × 1000: `C:\Users\garyn\AppData\Local\Temp\five-product-studio-desktop.png`
+  - Three-project visual row at 1440 × 1000: `C:\Users\garyn\AppData\Local\Temp\selected-work-desktop.png`
+  - Two-project text row at 1440 × 1000: `C:\Users\garyn\AppData\Local\Temp\selected-work-text-row-desktop.png`
+  - Five-product Studio at 390 × 844: `C:\Users\garyn\AppData\Local\Temp\five-product-studio-mobile.png`
+  - Studio product rows at 390 × 844: `C:\Users\garyn\AppData\Local\Temp\five-product-rows-mobile.png`
+  - Selected-work text row at 390 × 844: `C:\Users\garyn\AppData\Local\Temp\selected-work-text-mobile.png`
 - Local implementation URL: `http://127.0.0.1:4173/`
 - Source pixels: 916 × 1717
 - Primary implementation viewport and pixels: 1078 × 1409 CSS and image pixels, device scale factor 1
-- Additional validated viewports: 1662 × 1000, 768 × 1024, and 390 × 844 CSS pixels
-- State: public portfolio at the hero and journey anchors; mobile navigation and journey accordion states verified.
+- Additional validated viewports: 1662 × 1000, 1440 × 1000, 768 × 1024, and 390 × 844 CSS pixels
+- State: public portfolio at the hero, Studio, Work, and Journey anchors; five-product Studio and three-plus-two selected-work layouts verified.
 
 ## Combined Comparison Evidence
 
@@ -37,18 +43,19 @@ No actionable P0, P1, or P2 findings remain.
 - Spacing and layout rhythm: the hero begins at the top edge behind the header. The standalone About band has been removed, and the studio now follows the hero directly at its border, matching the reference sequence.
 - Colors and visual tokens: the ink-dark surface, brass rules, cyan links, off-white type, and restrained hairlines remain faithful to the selected editorial direction.
 - Image quality and asset fidelity: the portrait uses the authentic hero asset with `object-fit: cover`, a stable 36% horizontal focal point, and a top-aligned crop. The longer lower fade preserves the face and torso while blending the photograph naturally into the page.
-- Copy and content: the approved portfolio copy and private-link exclusions remain unchanged. The About navigation destination now anchors to the hero introduction instead of a separate content band.
+- Copy and content: MacSweeper and Windows Whisper Client now use maturity-appropriate Studio copy and status labels. Private repositories remain unlinked, and the About navigation destination still anchors to the hero introduction.
 - Journey continuity: the company-logo cards again use the previous rounded treatment and soft depth, accordion surfaces have rounded corners, and the expanded highlight list restores the earlier green glowing bullets and row treatment.
-- Studio-detail fidelity: the public name now reads Curious Ventures LLC. All three product assets are clipped to 12-pixel rounded corners with transparent CSS backgrounds, zero surrounding border, and no additional square backing surface.
+- Studio-detail fidelity: the public name reads Curious Ventures LLC. All five product assets are clipped to 12-pixel rounded corners with transparent CSS backgrounds, zero surrounding border, and no additional square backing surface.
+- Portfolio hierarchy: HearClara, MacSweeper, Windows Whisper Client, Rosie, and AppSpec Studio appear as five equal Studio rows in maturity order. Family History, IcelandWalk, and House Chase form a three-column illustrated row; DotHider and Customized RustDesk form an equal two-column text row without a secondary category heading.
 - Rule geometry: the product-column container no longer has a top border. The first product row owns the hairline and begins 41 pixels to the right of the vertical divider at the 943-pixel viewport, creating the detached corner visible in the reference.
 - Hero-rule fidelity: the divider below the positioning sentence is now a 56-pixel brass accent matching the short Curious Ventures rule instead of spanning the full hero-copy measure.
-- Responsiveness: measured horizontal overflow is zero at 390, 768, 1078, and 1662 CSS pixels. At 1078 pixels the hero begins at y=0, is 690 pixels high, and the studio begins immediately at y=690. At 1662 pixels the hero and studio transition at y=900.
+- Responsiveness: measured horizontal overflow is zero at 390, 768, 1078, 1440, and 1662 CSS pixels. At 1440 pixels the five Studio rows measure 170–177 pixels high with 112-pixel artwork; at 390 pixels artwork resolves to 64 pixels and both project groups stack to one column.
 
 Acceptable intentional differences:
 
 - Product descriptions follow the approved current specification rather than concept-copy visible in the inspiration image.
-- Authentic product assets replace conceptual placeholder imagery from the visual reference.
-- The portfolio remains content-complete below the compared crop, including additional projects, career history, and contact information.
+- Purpose-built product artwork replaces conceptual placeholder imagery from the visual reference.
+- The portfolio remains content-complete below the compared crop, including five selected projects, career history, and contact information.
 
 ## Interaction and Accessibility Checks
 
@@ -57,6 +64,7 @@ Acceptable intentional differences:
 - The Curious Ventures journey accordion changes from collapsed to expanded and reveals all three restored bullet rows.
 - Company logos remain linked only where public destinations exist.
 - Heading order, landmarks, image alt text, and responsive navigation semantics remain intact.
+- All five Studio images load successfully with descriptive alt text; all public external links retain `_blank` and `noopener noreferrer`.
 - Browser diagnostics showed no application errors or warnings.
 
 ## Comparison History
@@ -85,6 +93,9 @@ Acceptable intentional differences:
 8. P2: the brass rule below the hero positioning sentence spanned the full text column instead of acting as a short editorial accent.
    - Fix: replaced the full-width border with a 56-pixel accent matching the studio title rule.
    - Post-fix evidence: `design-comparison-hero-rule-943.png`.
+9. P2: MacSweeper and Windows Whisper Client were visually demoted into project tiers that understated their product maturity, while DotHider and Customized RustDesk sat beneath a diminishing small-tools heading.
+   - Fix: expanded Curious Ventures LLC to five equal maturity-ordered rows, removed the small-tools tier, and rebuilt selected work as one three-plus-two portfolio section.
+   - Post-fix evidence: `five-product-studio-desktop.png`, `selected-work-desktop.png`, `selected-work-text-row-desktop.png`, and the 390-pixel mobile captures.
 
 ## Implementation Checklist
 
@@ -97,6 +108,9 @@ Acceptable intentional differences:
 - [x] Remove extra product-icon frames and round the authentic assets.
 - [x] Detach the studio product hairline from its vertical divider.
 - [x] Shorten the hero brass rule to match the studio accent.
+- [x] Expand Curious Ventures LLC to five equal maturity-ordered products.
+- [x] Replace the additional-projects tier with a three-plus-two selected-work layout.
+- [x] Add and validate dedicated MacSweeper artwork at desktop and mobile sizes.
 - [x] Validate desktop, wide, tablet, and mobile layouts.
 - [x] Confirm zero horizontal overflow and clean browser diagnostics.
 

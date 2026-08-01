@@ -18,6 +18,26 @@ export const studioProducts = [
     linkLabel: "Visit HearClara",
   },
   {
+    name: "MacSweeper",
+    description:
+      "A native macOS application for reviewing, quarantining, and safely removing application leftovers.",
+    status: "Release candidate",
+    href: null,
+    artwork: "/macsweeper-icon.png",
+    artworkAlt: "MacSweeper application icon",
+    linkLabel: null,
+  },
+  {
+    name: "Windows Whisper Client",
+    description:
+      "A tray-first Windows client for private speech-to-text and remote-work paste workflows.",
+    status: "In use",
+    href: null,
+    artwork: "/windows-whisper-icon.png",
+    artworkAlt: "Windows Whisper Client application icon",
+    linkLabel: null,
+  },
+  {
     name: "Rosie",
     description:
       "A local-first household assistant for calendars, reminders, voice, and everyday coordination.",
@@ -52,16 +72,6 @@ export const selectedProjects = [
     linkLabel: "Visit the archive",
   },
   {
-    name: "Windows Whisper Client",
-    description:
-      "A Windows desktop client for private speech-to-text and practical remote-work workflows.",
-    status: "Personal utility",
-    href: null,
-    artwork: "/windows-whisper-icon.png",
-    artworkAlt: "Windows Whisper Client application icon",
-    linkLabel: null,
-  },
-  {
     name: "IcelandWalk",
     description: "An offline narrated walking guide to Reykjavík.",
     status: "Open source",
@@ -79,19 +89,6 @@ export const selectedProjects = [
     artwork: "/house-chase-graphic.png",
     artworkAlt:
       "An isometric house interior illustrating the playful chase concept in House Chase",
-    linkLabel: null,
-  },
-];
-
-export const additionalProjects = [
-  {
-    name: "MacSweeper",
-    description:
-      "A native macOS utility for reviewing and safely quarantining application leftovers.",
-    status: "In development",
-    href: null,
-    artwork: null,
-    artworkAlt: null,
     linkLabel: null,
   },
   {
