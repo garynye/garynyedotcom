@@ -25,6 +25,7 @@ test("renders the new personal positioning without the discarded tagline", () =>
   render(<App />);
 
   expect(screen.getByRole("heading", { name: "Gary Nye", level: 1 })).toBeTruthy();
+  expect(screen.queryByRole("link", { name: "Gary Nye home" })).toBeNull();
   expect(
     screen.getByText("I build products and lead complex businesses.")
   ).toBeTruthy();

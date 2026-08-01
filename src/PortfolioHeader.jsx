@@ -30,10 +30,6 @@ export default function PortfolioHeader() {
 
   return (
     <header className="portfolio-header">
-      <a className="portfolio-wordmark" href="#top" aria-label="Gary Nye home">
-        Gary Nye
-      </a>
-
       <nav className="desktop-navigation" aria-label="Primary navigation">
         <NavigationLinks />
       </nav>
