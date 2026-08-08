@@ -50,8 +50,9 @@ export default function StudioSection() {
         <p className="section-kicker">Studio</p>
         <h2 id="studio-heading">Curious Ventures LLC</h2>
         <p className="studio-summary">
-          My independent product studio for practical AI and thoughtfully
-          engineered software.
+          My independent product studio for identifying real-world problems and
+          building thoughtful solutions with the best tools for the
+          job—including practical AI.
         </p>
         <p className="studio-role">Founder &amp; Managing Member</p>
       </div>

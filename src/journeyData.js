@@ -2,13 +2,13 @@ export const journeyEntries = [
   {
     company: "Curious Ventures LLC",
     logo: "/curious-ventures-icon.png",
-    logoAlt: "Curious Ventures LLC icon",
+    logoAlt: "Curious Ventures LLC CV monogram",
     roles: [
       {
         title: "Founder & Managing Member",
         meta: "Current",
         summary:
-          "Building practical, thoughtfully engineered software through an independent product studio spanning language learning, private speech-to-text, safe macOS maintenance, product specification, and local-first household coordination.",
+          "Identifying real-world problems and building thoughtful solutions through an independent product studio, using the best tools for each job—including practical AI—across language learning, private speech-to-text, safe macOS maintenance, product specification, and local-first household coordination.",
         highlights: [
           "HearClara: an audio-first language acquisition platform designed around adult working-memory limits.",
           "MacSweeper: a native macOS application for reviewing, quarantining, and safely removing application leftovers.",

@@ -93,6 +93,11 @@ test("renders Curious Ventures LLC and its five products in maturity order", () 
   ).toBeTruthy();
   expect(within(studio).getByText("Founder & Managing Member")).toBeTruthy();
   expect(
+    within(studio).getByText(
+      "My independent product studio for identifying real-world problems and building thoughtful solutions with the best tools for the job—including practical AI."
+    )
+  ).toBeTruthy();
+  expect(
     within(studio)
       .getAllByRole("heading", { level: 3 })
       .map((heading) => heading.textContent)
@@ -213,7 +218,7 @@ test("keeps the Curious Ventures entry and corporate journey accordions working"
   expect(within(journey).getByText("Current")).toBeTruthy();
   expect(within(journey).getByText("Thermo Fisher Scientific")).toBeTruthy();
   const curiousVenturesLogos = within(journey).getAllByRole("img", {
-    name: "Curious Ventures LLC icon",
+    name: "Curious Ventures LLC CV monogram",
   });
   expect(curiousVenturesLogos).toHaveLength(2);
   curiousVenturesLogos.forEach((logo) => {
@@ -221,7 +226,7 @@ test("keeps the Curious Ventures entry and corporate journey accordions working"
   });
 
   const summary = within(journey).getByRole("button", {
-    name: /Building practical, thoughtfully engineered software/i,
+    name: /Identifying real-world problems and building thoughtful solutions/i,
   });
   const details = document.getElementById(summary.getAttribute("aria-controls"));
 
